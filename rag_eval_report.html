@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>企业知识库 RAG — 检索与生成优化实验报告</title>
+<style>
+  :root{
+    --ink:#1a1d21; --muted:#5b6572; --line:#e4e8ee; --bg:#f6f8fa; --card:#fff;
+    --accent:#2f6fed; --good:#1a7f4b; --goodbg:#e8f6ee; --warn:#a8600a; --warnbg:#fdf3e4;
+    --bad:#b4232a; --badbg:#fdecec; --code:#f2f4f7;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    line-height:1.7;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:48px 24px 80px}
+  header{border-bottom:2px solid var(--ink);padding-bottom:20px;margin-bottom:36px}
+  h1{font-size:27px;margin:0 0 8px;letter-spacing:-.3px}
+  .sub{color:var(--muted);font-size:14px}
+  .meta{color:var(--muted);font-size:13px;margin-top:10px}
+  h2{font-size:19px;margin:44px 0 14px;padding-left:11px;border-left:4px solid var(--accent)}
+  h3{font-size:15px;margin:26px 0 10px;color:#2b3138}
+  p{margin:10px 0}
+  ul,ol{margin:10px 0;padding-left:22px}
+  li{margin:5px 0}
+  table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.5px;background:var(--card);
+    border:1px solid var(--line);border-radius:6px;overflow:hidden}
+  th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--line)}
+  th{background:#eef2f7;font-weight:600;color:#333b45;white-space:nowrap}
+  tr:last-child td{border-bottom:none}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:18px 22px;margin:16px 0}
+  .tag{display:inline-block;font-size:12px;padding:1px 8px;border-radius:10px;font-weight:600}
+  .t-good{background:var(--goodbg);color:var(--good)}
+  .t-bad{background:var(--badbg);color:var(--bad)}
+  .t-warn{background:var(--warnbg);color:var(--warn)}
+  .up{color:var(--good);font-weight:600}
+  .down{color:var(--bad);font-weight:600}
+  .flat{color:var(--muted)}
+  code{background:var(--code);padding:1.5px 6px;border-radius:4px;font-size:12.5px;
+    font-family:ui-monospace,SFMono-Regular,Consolas,monospace}
+  pre{background:#1f2429;color:#e6edf3;padding:16px 18px;border-radius:8px;overflow:auto;font-size:12.5px;line-height:1.6}
+  pre code{background:none;color:inherit;padding:0}
+  .lead{background:var(--card);border-left:4px solid var(--accent);padding:14px 20px;border-radius:0 6px 6px 0;margin:18px 0}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin:18px 0}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:16px 18px}
+  .kpi .k{font-size:12.5px;color:var(--muted)}
+  .kpi .v{font-size:24px;font-weight:700;margin-top:4px;font-variant-numeric:tabular-nums}
+  .kpi .d{font-size:12px;color:var(--muted);margin-top:2px}
+  .muted{color:var(--muted)}
+  footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:12.5px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>企业知识库 RAG — 检索与生成优化实验报告</h1>
+  <div class="sub">度量驱动的检索优化过程 + 评测 harness（harness 思想）落地记录</div>
+  <div class="meta">项目：KnowledgeBase &nbsp;·&nbsp; 生成模型：deepseek-flash &nbsp;·&nbsp; 向量模型：bge-small-zh-v1.5 &nbsp;·&nbsp; 重排模型：bge-reranker-base</div>
+</header>
+
+<h2>1. 背景与目标</h2>
+<p>知识库问答（RAG）的检索与生成质量，靠"感觉"无法优化——改一个参数同时影响多项指标，且彼此掩盖。本阶段目标有二：</p>
+<ol>
+  <li><strong>让检索优化可量化</strong>：每一步都能看到前后指标，不达标可回退，杜绝"感觉变好了"。</li>
+  <li><strong>落地 harness 思想</strong>：先立度量（评测集 + 指标 + 报告），再做优化；优化结论全部可复现、可回溯。</li>
+</ol>
+<div class="lead">核心原则：<strong>评测与线上共用同一条检索/生成代码路径</strong>。二者若不一致，优化分数就是"假优化"。</div>
+
+<h2>2. 评测 Harness 设计</h2>
+
+<h3>2.1 目录结构（与业务代码分离）</h3>
+<pre><code>backend/eval/
+├── dataset/qa_eval.jsonl      # 黄金测试集（半自动构造，期望用“问题文本”定位，文档重传不失效）
+├── metrics.py                 # 检索指标：hit@1 / hit@k / recall@k / MRR（纯函数）
+├── dump_qa.py                 # 导出库中问答，辅助维护测试集
+├── run_retrieval_eval.py      # 检索层跑分 + 报告 + 前后对比（--compare-with）
+├── judge.py                   # 生成层 LLM-as-judge（正确性 / 忠实度）
+├── run_answer_eval.py         # 生成层跑分（--repeat 降噪 + 波动量化）
+└── reports/                   # 每次运行的报告存档（12 份），配置自描述、可回溯</code></pre>
+
+<h3>2.2 指标定义</h3>
+<table>
+  <tr><th>层级</th><th>指标</th><th>含义</th></tr>
+  <tr><td rowspan="4">检索层</td><td>命中率@1</td><td>正确答案排在首位的比例</td></tr>
+  <tr><td>命中率@k</td><td>正确答案出现在 top-k 内的比例</td></tr>
+  <tr><td>召回率@k</td><td>top-k 覆盖应命中文档的比例</td></tr>
+  <tr><td>MRR</td><td>首个命中项的倒数排名均值（衡量排序质量）</td></tr>
+  <tr><td rowspan="3">生成层</td><td>答案正确性</td><td>模型答案与参考答案一致程度（correct=1 / partial=0.5 / incorrect=0）</td></tr>
+  <tr><td>答案忠实度</td><td>答案是否由检索资料支持（faithful=1 / partial=0.5 / unfaithful=0）</td></tr>
+  <tr><td>拒答准确率</td><td>库中无答案时是否正确回答「根据已有资料无法回答」</td></tr>
+</table>
+
+<h3>2.3 语料与测试集</h3>
+<p>评测语料经两轮扩充：由最初 2 库 9 条 → 5 库 <strong>201 条</strong>（公司规章 / 公司运维 / 财务报销 / 人事招聘 / 安全合规），并<strong>刻意埋入同主题密集近义干扰簇</strong>（年假 vs 婚假/产假、磁盘告警 vs CPU 告警、备份位置 vs 备份保留 vs 备份恢复、跨库的"请假"等）。测试集 <strong>70 条</strong>（67 正样本 + 3 负样本）。</p>
+<div class="lead">扩语料的动因：首版 9 条 QA 时 k=4 几乎必然命中，指标全 1.000、<strong>毫无区分度</strong>。语料与题目难度不足时，harness 测不出任何优化的价值。</div>
+
+<h2>3. 检索层优化过程</h2>
+
+<h3>3.1 阶段一：优化 1 —— bge query 指令前缀 <span class="tag t-bad">被否决</span></h3>
+<p>假设：bge 官方推荐给查询加指令前缀，应能提升检索。做法：加开关做 A/B 对照。</p>
+<table>
+  <tr><th>配置</th><th class="num">命中率@1</th><th class="num">命中率@k</th><th class="num">召回率@k</th><th class="num">MRR</th></tr>
+  <tr><td>无前缀（同期基线，48 样本）</td><td class="num">0.978</td><td class="num">1.000</td><td class="num">1.000</td><td class="num">0.985</td></tr>
+  <tr><td>加 bge 指令前缀</td><td class="num">0.978</td><td class="num">1.000</td><td class="num">1.000</td><td class="num">0.985</td></tr>
+</table>
+<p><strong>结论：四项指标零变化，排名一条未变</strong>（MRR 精确相同）。原因：bge <strong>zh-v1.5</strong> 官方已说明指令前缀对中文 v1.5 影响不大（该建议主要针对 en-v1.5）。<span class="tag t-bad">按证据回退</span>，默认关闭，保留开关便于复验。</p>
+<p class="muted">这正是 harness 的价值：一个"看起来该有用"的优化被数据证明无效，避免了盲改。</p>
+
+<h3>3.2 阶段二：优化 2 —— 两阶段检索 + 交叉编码器重排 <span class="tag t-good">已采纳</span></h3>
+<p>做法：向量召回 top-10 → bge-reranker-base 精排 → 取 top-k。此优化置于生产唯一入口 <code>agent/service.py:retrieve()</code>，评测直接度量其效果。</p>
+<table>
+  <tr><th>配置（200 条语料 / 70 样本）</th><th class="num">命中率@1</th><th class="num">命中率@k</th><th class="num">召回率@k</th><th class="num">MRR</th></tr>
+  <tr><td>k=4 无重排（基线）</td><td class="num">0.985</td><td class="num">1.000</td><td class="num">1.000</td><td class="num">0.990</td></tr>
+  <tr><td>k=2 无重排</td><td class="num">0.985</td><td class="num">0.985</td><td class="num">0.985</td><td class="num">0.985</td></tr>
+  <tr><td>k=1 无重排</td><td class="num">0.985</td><td class="num">0.985</td><td class="num">0.985</td><td class="num">0.985</td></tr>
+  <tr><td><strong>k=4 重排</strong></td><td class="num up">1.000</td><td class="num">1.000</td><td class="num">1.000</td><td class="num up">1.000</td></tr>
+  <tr><td><strong>k=2 重排</strong></td><td class="num up">1.000</td><td class="num">1.000</td><td class="num">1.000</td><td class="num up">1.000</td></tr>
+  <tr><td><strong>k=1 重排</strong></td><td class="num up">1.000</td><td class="num up">1.000</td><td class="num up">1.000</td><td class="num up">1.000</td></tr>
+</table>
+<p><strong>两个关键结论：</strong></p>
+<ol>
+  <li>重排在每个 k 上都把唯一失分样本（<code>年假一般能休几天？</code>，正确答案被"婚假/产假"挤到第 3）修正到首位，命中率@1 <span class="up">+0.015</span>、MRR <span class="up">+0.010</span>。</li>
+  <li><strong>小 k 才暴露真实收益</strong>：无重排时把 k 从 4 降到 1/2，召回率@k 从 1.000 掉到 0.985（正确项没进 top-1/2）；<strong>开重排后 k=1 即达 1.000</strong>。生产含义：每次喂给 LLM 的上下文可从 4 条砍到 1-2 条而准确率不降，省 token、降延迟、减少无关上下文干扰。</li>
+</ol>
+<div class="lead">据此将默认 <code>RETRIEVAL_K</code> 由 <strong>4 调整为 2</strong>：上下文减半，同时保留一条冗余降低风险。</div>
+
+<h2>4. 生成层优化过程</h2>
+<table>
+  <tr><th>实验</th><th class="num">答案正确性</th><th class="num">答案忠实度</th><th class="num">拒答准确率</th><th>说明</th></tr>
+  <tr><td>answer_baseline</td><td class="num">0.993</td><td class="num">0.993</td><td class="num">1.000</td><td>首版生成层基线，检出 1 条 partial</td></tr>
+  <tr><td>answer_fixed</td><td class="num up">1.000</td><td class="num">0.993</td><td class="num">1.000</td><td>拆分复合问答 + 判定规则排除与问题无关的额外信息</td></tr>
+  <tr><td>answer_prompt</td><td class="num">1.000</td><td class="num">0.993</td><td class="num">1.000</td><td>prompt 加约束：不添加资料未明确陈述的结论</td></tr>
+  <tr><td>answer_prompt_r2（同配置复跑）</td><td class="num">1.000</td><td class="num up">1.000</td><td class="num">1.000</td><td>验证判定波动——同配置结果不同</td></tr>
+  <tr><td><strong>answer_prod（3 轮均值）</strong></td><td class="num">1.000 ± 0.000</td><td class="num">0.995 ± 0.004</td><td class="num">1.000 ± 0.000</td><td>权威基线，含判定波动量化</td></tr>
+</table>
+
+<h3>4.1 抓到的问题</h3>
+<div class="card">
+  <p><strong>问题一 · 测试集标注缺陷（正确性 0.993 → 1.000）</strong><br>
+  语料中存在复合问答 <code>工牌或名片丢失了怎么办？</code>，而测试问题只问"工牌"。模型只答工牌被误判 partial。修复：把该问答<strong>拆分为两条原子问答</strong>（问答对原子化是数据卫生要求），并调整判定规则不把参考答案中超范围的信息计入扣分。</p>
+  <p><strong>问题二 · 过度断言（忠实度 partial，已被 prompt 约束修复）</strong><br>
+  <code>年假能不能跨年使用？</code>：资料只说"原则上当年休完、可申请延期"，模型却自行加了"<strong>不能</strong>跨年使用"。<strong>正确性判定为 correct（语义相符），忠实度判定为 partial（含未陈述断言）</strong>——这正是忠实度指标的价值：能抓出正确性漏掉的过度断言。加入 prompt 约束后，答案改为忠实复述原文，忠实度转 faithful。</p>
+</div>
+
+<h3>4.2 重要方法论发现：LLM 判定存在波动</h3>
+<p>同配置复跑两次，忠实度出现 <code>0.993</code> 与 <code>1.000</code> 的差异；逐样本核对发现部分波动属于<strong>判定噪声</strong>（如 <code>办公室能穿拖鞋吗？</code> 的答案完全有资料支持却被判 partial）。</p>
+<div class="grid">
+  <div class="kpi"><div class="k">判定波动（标准差）</div><div class="v">±0.004</div><div class="d">≈ 1 / 67 个样本</div></div>
+  <div class="kpi"><div class="k">可信判定阈值</div><div class="v">&gt; 0.004</div><div class="d">差值小于波动即不可信</div></div>
+  <div class="kpi"><div class="k">降噪手段</div><div class="v">--repeat 3</div><div class="d">多轮取均值 + 波动量化</div></div>
+</div>
+<p>因此：<strong>任何小于波动幅度的指标差都不能当成优化收益</strong>；harness 的 <code>--compare-with</code> 已内置该判据，差值在噪声内会自动标注。</p>
+
+<h2>5. 结论</h2>
+<div class="grid">
+  <div class="kpi"><div class="k">检索层 · 命中率@1</div><div class="v">1.000</div><div class="d">由 0.985 提升（重排）</div></div>
+  <div class="kpi"><div class="k">检索层 · MRR</div><div class="v">1.000</div><div class="d">由 0.990 提升（重排）</div></div>
+  <div class="kpi"><div class="k">生成层 · 正确性</div><div class="v">1.000</div><div class="d">±0.000</div></div>
+  <div class="kpi"><div class="k">生成层 · 忠实度</div><div class="v">0.995</div><div class="d">±0.004</div></div>
+  <div class="kpi"><div class="k">生成层 · 拒答准确率</div><div class="v">1.000</div><div class="d">3/3 负样本正确拒答</div></div>
+</div>
+
+<h3>5.1 当前生产配置</h3>
+<table>
+  <tr><th>配置项</th><th>值</th><th>依据</th></tr>
+  <tr><td><code>RETRIEVAL_K</code></td><td>2</td><td>实测重排后 k=1/2/4 指标均 1.000，取 2 兼顾上下文精简与冗余</td></tr>
+  <tr><td><code>RERANK_ENABLED</code></td><td>true</td><td>命中率@1、MRR 均提升至 1.000，代价约 +0.4s/次</td></tr>
+  <tr><td><code>QUERY_USE_INSTRUCTION</code></td><td>false</td><td>实测零收益</td></tr>
+  <tr><td>prompt 约束</td><td>三条</td><td>依据资料作答 / 无内容则拒答 / 不添加未陈述的结论</td></tr>
+</table>
+
+<h3>5.2 方法论沉淀</h3>
+<ul>
+  <li><strong>单一入口</strong>：所有检索优化只改 <code>retrieve()</code>，评测与线上同源 → 杜绝"假优化"。</li>
+  <li><strong>报告自描述</strong>：每份报告记录配置 + 指标，<code>--compare-with</code> 出前后对比，全部可回溯。</li>
+  <li><strong>数据卫生即评测质量</strong>：问答对必须原子化，否则判定失真。</li>
+  <li><strong>harness 会饱和</strong>：每次优化后须主动加难度（扩语料 / 加难题），否则指标失去分辨力。</li>
+  <li><strong>先降噪再读结论</strong>：差值须大于判定波动，否则只能记为"待复验"。</li>
+</ul>
+
+<h2>6. 后续优化方向</h2>
+<table>
+  <tr><th>优先级</th><th>方向</th><th>理由</th></tr>
+  <tr><td><span class="tag t-warn">高</span></td><td>引入独立判定模型</td><td>波动与偏差的根源是"同源自评"，换独立 judge 可同时降偏差与波动</td></tr>
+  <tr><td><span class="tag t-warn">高</span></td><td>harness 接入回归门禁</td><td>已具备噪声判据，可在配置变更后自动跑分，指标下降超阈值即告警，防负优化</td></tr>
+  <tr><td><span class="tag t-warn">高</span></td><td>扩难度后重启检索优化</td><td>检索与生成层均已饱和，须加多跳 / 跨文档 / 术语缩写难题才能继续度量</td></tr>
+  <tr><td>中</td><td>混合检索（BM25 + 向量）</td><td>对 CPU、offer 等英文缩写与专有名词的召回更稳</td></tr>
+  <tr><td>中</td><td>Query 改写 / 扩展</td><td>用 LLM 改写查询以覆盖口语化问法</td></tr>
+  <tr><td>中</td><td>拒答阈值化</td><td>当前负样本靠 prompt 兜底，可加相似度阈值，避免"有文档就硬答"</td></tr>
+  <tr><td>低</td><td>多模态（图片参与生成）</td><td>媒体已支持存储与佐证展示，接入视觉模型后可用于生成</td></tr>
+</table>
+
+<h2>7. 运行方式</h2>
+<pre><code># 检索层：固化基线 / 新配置 / 前后对比
+python -m eval.run_retrieval_eval --tag baseline
+python -m eval.run_retrieval_eval --tag v2 --k 2 --note "..." --compare-with baseline
+
+# 生成层：降噪评测（推荐 3 轮起）
+python -m eval.run_answer_eval --tag answer_v1 --repeat 3
+python -m eval.run_answer_eval --tag answer_v2 --repeat 3 --compare-with answer_v1
+
+# 维护测试集：导出库中问答
+python -m eval.dump_qa 公司规章</code></pre>
+
+<footer>
+  报告基于 <code>backend/eval/reports/</code> 下 12 份实验报告自动汇总生成。所有指标均来自可复现的评测运行，配置与指标随报告一同存档。
+</footer>
+
+</div>
+</body>
+</html>

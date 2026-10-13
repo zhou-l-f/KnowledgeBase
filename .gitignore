@@ -1,0 +1,73 @@
+# ============================================================
+# 知识库智能问答系统 - Git 忽略规则
+# ============================================================
+
+# ---------- 环境变量 / 密钥 ----------
+# 真实 .env 含 JWT 密钥、预置用户哈希、DeepSeek API Key，严禁提交
+.env
+.env.*
+!.env.example
+
+# ---------- 本地模型（体积约 1.2GB，请按 README 自行下载）----------
+backend/models/
+
+# ---------- 运行时数据（启动时自动生成，不纳入版本控制）----------
+backend/data/
+
+# ---------- Python ----------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib64/
+parts/
+sdist/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# 虚拟环境
+.venv/
+venv/
+ENV/
+env/
+
+# 测试与静态检查缓存
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# ---------- 前端 ----------
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+frontend/*.local
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ---------- 编辑器 / 操作系统 ----------
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# ---------- SVN 元数据（本项目原使用 SVN 管理，改用 Git 后忽略）----------
+.svn/
+
+# ---------- 日志与临时文件 ----------
+*.log
+*.tmp
+*.bak

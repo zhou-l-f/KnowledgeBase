@@ -1,0 +1,70 @@
+{"id": "att-01", "kb_name": "公司规章", "question": "公司的年假有多少天？", "expect_question": "公司的年假有多少天？", "expect_source": "考勤制度.txt", "type": "simple", "note": "年假天数基本事实"}
+{"id": "att-02", "kb_name": "公司规章", "question": "如何申请年假？", "expect_question": "如何申请年假？", "expect_source": "考勤制度.txt", "type": "simple", "note": "年假申请流程"}
+{"id": "att-03", "kb_name": "公司规章", "question": "迟到的处罚是什么？", "expect_question": "迟到的处罚是什么？", "expect_source": "考勤制度.txt", "type": "simple", "note": "迟到处罚规则"}
+{"id": "att-04", "kb_name": "公司规章", "question": "年假一般能休几天？", "expect_question": "公司的年假有多少天？", "expect_source": "考勤制度.txt", "type": "paraphrase", "note": "年假天数同义问法"}
+{"id": "att-05", "kb_name": "公司规章", "question": "加班了能不能换成调休？", "expect_question": "加班可以调休吗？", "expect_source": "考勤制度.txt", "type": "paraphrase", "note": "加班调休同义问法"}
+{"id": "att-06", "kb_name": "公司规章", "question": "请假要提前几天说？", "expect_question": "请假需要提前多久申请？", "expect_source": "考勤制度.txt", "type": "paraphrase", "note": "请假提前量同义问法"}
+{"id": "att-07", "kb_name": "公司规章", "question": "年假怎么走流程申请？", "expect_question": "如何申请年假？", "expect_source": "考勤制度.txt", "type": "paraphrase", "note": "年假申请同义问法"}
+{"id": "att-08", "kb_name": "公司规章", "question": "公司提供免费午餐吗？", "expect_question": null, "expect_refusal": true, "type": "negative", "note": "知识库无该内容，应拒答"}
+{"id": "att-09", "kb_name": "公司规章", "question": "旷工会怎么处理？", "expect_question": "旷工怎么处理？", "expect_source": "考勤制度.txt", "type": "paraphrase", "note": "旷工处理（干扰：迟到处罚）"}
+{"id": "att-10", "kb_name": "公司规章", "question": "忘记打卡了该怎么办？", "expect_question": "忘记打卡了怎么办？", "expect_source": "考勤制度.txt", "type": "paraphrase", "note": "补卡流程"}
+{"id": "att-11", "kb_name": "公司规章", "question": "调休有有效期限制吗？", "expect_question": "调休的有效期是多久？", "expect_source": "考勤制度.txt", "type": "paraphrase", "note": "调休有效期（干扰：加班可以调休吗）"}
+{"id": "att-12", "kb_name": "公司规章", "question": "加班需要提前申请吗？", "expect_question": "加班需要提前申请吗？", "expect_source": "考勤制度.txt", "type": "simple", "note": "加班申请（干扰：加班调休）"}
+{"id": "att-13", "kb_name": "公司规章", "question": "婚假有多少天？", "expect_question": "婚假有多少天？", "expect_source": "休假制度.txt", "type": "simple", "note": "婚假（干扰：年假天数）"}
+{"id": "att-14", "kb_name": "公司规章", "question": "陪产假是多少天？", "expect_question": "陪产假有多少天？", "expect_source": "休假制度.txt", "type": "paraphrase", "note": "陪产假（干扰：产假、婚假）"}
+{"id": "att-15", "kb_name": "公司规章", "question": "年假能不能跨年使用？", "expect_question": "年假可以跨年使用吗？", "expect_source": "休假制度.txt", "type": "paraphrase", "note": "年假跨年（跨文档干扰：考勤制度也有年假）"}
+{"id": "att-16", "kb_name": "公司规章", "question": "事假扣工资吗？", "expect_question": "事假期间工资怎么算？", "expect_source": "休假制度.txt", "type": "paraphrase", "note": "事假工资（干扰：病假工资）"}
+{"id": "att-17", "kb_name": "公司规章", "question": "离职时公司资料要归还吗？", "expect_question": "离职时公司资料如何处理？", "expect_source": "保密与信息管理规定.txt", "type": "paraphrase", "note": "离职资料归还"}
+{"id": "att-18", "kb_name": "公司规章", "question": "违规泄露机密会有什么后果？", "expect_question": "违规泄露机密如何处理？", "expect_source": "保密与信息管理规定.txt", "type": "paraphrase", "note": "泄密后果"}
+{"id": "ops-01", "kb_name": "公司运维", "question": "生产服务器上如何重启一个服务？", "expect_question": "生产服务器上如何重启一个服务？", "expect_source": "服务器操作.txt", "type": "simple", "note": "重启服务规范"}
+{"id": "ops-02", "kb_name": "公司运维", "question": "数据库备份在哪里？", "expect_question": "数据库备份在哪里？", "expect_source": "服务器操作.txt", "type": "simple", "note": "备份存放位置"}
+{"id": "ops-03", "kb_name": "公司运维", "question": "部署新版本应用的流程是什么？", "expect_question": "部署新版本应用的流程是什么？", "expect_source": "服务器操作.txt", "type": "simple", "note": "发布流程"}
+{"id": "ops-04", "kb_name": "公司运维", "question": "服务器磁盘报警了该怎么办？", "expect_question": "服务器磁盘告警怎么处理？", "expect_source": "服务器操作.txt", "type": "paraphrase", "note": "磁盘告警同义问法"}
+{"id": "ops-05", "kb_name": "公司运维", "question": "发布新版本要走哪些步骤？", "expect_question": "部署新版本应用的流程是什么？", "expect_source": "服务器操作.txt", "type": "paraphrase", "note": "发布流程同义问法"}
+{"id": "ops-06", "kb_name": "公司运维", "question": "数据库的备份文件放在哪个目录？", "expect_question": "数据库备份在哪里？", "expect_source": "服务器操作.txt", "type": "paraphrase", "note": "备份位置同义问法"}
+{"id": "ops-07", "kb_name": "公司运维", "question": "VPN 权限怎么申请？", "expect_question": null, "expect_refusal": true, "type": "negative", "note": "知识库无该内容，应拒答"}
+{"id": "ops-08", "kb_name": "公司运维", "question": "可以用 Docker 部署吗？", "expect_question": null, "expect_refusal": true, "type": "negative", "note": "知识库无该内容，应拒答"}
+{"id": "ops-09", "kb_name": "公司运维", "question": "收到 CPU 告警怎么处理？", "expect_question": "收到 CPU 使用率告警怎么处理？", "expect_source": "网络与安全运维.txt", "type": "paraphrase", "note": "CPU 告警（干扰：磁盘告警）"}
+{"id": "ops-10", "kb_name": "公司运维", "question": "备份文件保留多久？", "expect_question": "备份文件保留多久？", "expect_source": "数据库运维.txt", "type": "simple", "note": "备份保留期（干扰：备份在哪里）"}
+{"id": "ops-11", "kb_name": "公司运维", "question": "备份如何恢复？", "expect_question": "备份如何恢复？", "expect_source": "数据库运维.txt", "type": "simple", "note": "备份恢复（干扰：备份位置、备份保留）"}
+{"id": "ops-12", "kb_name": "公司运维", "question": "灰度发布是什么意思？", "expect_question": "什么是灰度发布？", "expect_source": "网络与安全运维.txt", "type": "paraphrase", "note": "灰度发布定义"}
+{"id": "ops-13", "kb_name": "公司运维", "question": "发布失败如何回滚？", "expect_question": "发布失败如何回滚？", "expect_source": "网络与安全运维.txt", "type": "simple", "note": "回滚（干扰：发布流程）"}
+{"id": "ops-14", "kb_name": "公司运维", "question": "服务日志在哪里查看？", "expect_question": "服务日志在哪里查看？", "expect_source": "服务器操作.txt", "type": "simple", "note": "日志路径（干扰：审计日志保留期）"}
+{"id": "ops-15", "kb_name": "公司运维", "question": "跳板机会录屏吗？", "expect_question": "跳板机会记录操作过程吗？", "expect_source": "网络与安全运维.txt", "type": "paraphrase", "note": "跳板机录屏"}
+{"id": "ops-16", "kb_name": "公司运维", "question": "可以个人直连生产数据库吗？", "expect_question": "可以个人直连生产数据库吗？", "expect_source": "数据库运维.txt", "type": "simple", "note": "直连数据库（干扰：临时访问数据库）"}
+{"id": "fin-01", "kb_name": "财务报销", "question": "差旅住宿标准是多少？", "expect_question": "差旅住宿标准是多少？", "expect_source": "费用与借款.txt", "type": "simple", "note": "住宿限额（干扰：住宿费超标）"}
+{"id": "fin-02", "kb_name": "财务报销", "question": "报销一般多久到账？", "expect_question": "报销单多久能到账？", "expect_source": "报销制度.txt", "type": "paraphrase", "note": "报销到账时效"}
+{"id": "fin-03", "kb_name": "财务报销", "question": "借款什么时候要还？", "expect_question": "借款什么时候归还？", "expect_source": "费用与借款.txt", "type": "paraphrase", "note": "借款归还"}
+{"id": "fin-04", "kb_name": "财务报销", "question": "加班餐费能报销吗？", "expect_question": "加班餐费可以报销吗？", "expect_source": "报销制度.txt", "type": "paraphrase", "note": "加班餐费（干扰：餐费报销标准）"}
+{"id": "fin-05", "kb_name": "财务报销", "question": "电子发票可以报销吗？", "expect_question": "电子发票可以报销吗？", "expect_source": "报销制度.txt", "type": "simple", "note": "电子发票（干扰：发票丢失、发票抬头）"}
+{"id": "hr-01", "kb_name": "人事招聘", "question": "员工请假怎么走流程？", "expect_question": "员工如何请假？", "expect_source": "员工管理.txt", "type": "paraphrase", "note": "请假流程（跨库干扰：公司规章也有请假）"}
+{"id": "hr-02", "kb_name": "人事招聘", "question": "试用期一般是多久？", "expect_question": "试用期是多久？", "expect_source": "招聘流程.txt", "type": "paraphrase", "note": "试用期时长"}
+{"id": "hr-03", "kb_name": "人事招聘", "question": "离职要提前多久提？", "expect_question": "离职需要提前多久提出？", "expect_source": "员工管理.txt", "type": "paraphrase", "note": "离职提前期（干扰：离职手续）"}
+{"id": "hr-04", "kb_name": "人事招聘", "question": "offer 的审批流程是什么？", "expect_question": "offer 审批流程是什么？", "expect_source": "招聘流程.txt", "type": "paraphrase", "note": "offer 审批"}
+{"id": "sec-01", "kb_name": "安全合规", "question": "审计日志要保留多久？", "expect_question": "审计日志保留多久？", "expect_source": "合规与审计.txt", "type": "paraphrase", "note": "审计日志保留（干扰：运维服务日志 14 天）"}
+{"id": "sec-02", "kb_name": "安全合规", "question": "弱密码可以用吗？", "expect_question": "可以使用弱密码吗？", "expect_source": "信息安全制度.txt", "type": "paraphrase", "note": "弱密码（干扰：密码设置要求）"}
+{"id": "sec-03", "kb_name": "安全合规", "question": "重要数据需要备份吗？", "expect_question": "重要数据需要备份吗？", "expect_source": "信息安全制度.txt", "type": "simple", "note": "数据备份（干扰：公司运维的数据库备份）"}
+{"id": "sec-04", "kb_name": "安全合规", "question": "离职后账号怎么处理？", "expect_question": "离职后账号如何处理？", "expect_source": "合规与审计.txt", "type": "paraphrase", "note": "离职账号回收"}
+{"id": "sec-05", "kb_name": "安全合规", "question": "办公电脑能装私人软件吗？", "expect_question": "办公电脑可以安装私人软件吗？", "expect_source": "信息安全制度.txt", "type": "paraphrase", "note": "私人软件安装"}
+{"id": "att-19", "kb_name": "公司规章", "question": "全勤奖怎么算？", "expect_question": "全勤奖怎么计算？", "expect_source": "奖惩制度.txt", "type": "paraphrase", "note": "全勤奖（干扰：迟到处罚）"}
+{"id": "att-20", "kb_name": "公司规章", "question": "迟到会不会影响全勤奖？", "expect_question": "迟到会影响全勤奖吗？", "expect_source": "奖惩制度.txt", "type": "paraphrase", "note": "迟到与全勤奖（干扰：全勤奖计算、迟到处罚）"}
+{"id": "att-21", "kb_name": "公司规章", "question": "严重违纪包括哪些行为？", "expect_question": "严重违纪包括哪些行为？", "expect_source": "奖惩制度.txt", "type": "simple", "note": "严重违纪（干扰：警告处分情形）"}
+{"id": "att-22", "kb_name": "公司规章", "question": "办公室能穿拖鞋吗？", "expect_question": "办公室着装有什么要求？", "expect_source": "员工行为规范.txt", "type": "paraphrase", "note": "着装要求"}
+{"id": "att-23", "kb_name": "公司规章", "question": "工牌丢了怎么办？", "expect_question": "工牌丢失了怎么办？", "expect_source": "员工行为规范.txt", "type": "paraphrase", "note": "工牌补办（原复合问答已拆分为原子条目）"}
+{"id": "ops-17", "kb_name": "公司运维", "question": "线上服务挂了先做什么？", "expect_question": "线上服务不可用第一步做什么？", "expect_source": "故障应急处理.txt", "type": "paraphrase", "note": "应急处置（干扰：各类告警处理）"}
+{"id": "ops-18", "kb_name": "公司运维", "question": "P0 故障多久要响应？", "expect_question": "P0 故障的响应时限是多久？", "expect_source": "故障应急处理.txt", "type": "paraphrase", "note": "P0 响应时限"}
+{"id": "ops-19", "kb_name": "公司运维", "question": "数据库宕机了怎么办？", "expect_question": "数据库宕机怎么处理？", "expect_source": "故障应急处理.txt", "type": "paraphrase", "note": "数据库宕机（干扰：备份恢复）"}
+{"id": "ops-20", "kb_name": "公司运维", "question": "云主机怎么申请？", "expect_question": "云主机如何申请？", "expect_source": "云资源与成本.txt", "type": "paraphrase", "note": "云主机申请（干扰：服务器权限申请）"}
+{"id": "ops-21", "kb_name": "公司运维", "question": "证书快到期了怎么办？", "expect_question": "证书到期了怎么办？", "expect_source": "云资源与成本.txt", "type": "paraphrase", "note": "证书续期"}
+{"id": "fin-06", "kb_name": "财务报销", "question": "供应商怎么引入？", "expect_question": "供应商如何引入？", "expect_source": "付款与合同.txt", "type": "paraphrase", "note": "供应商引入"}
+{"id": "fin-07", "kb_name": "财务报销", "question": "报销和付款有什么区别？", "expect_question": "报销和付款有什么区别？", "expect_source": "付款与合同.txt", "type": "simple", "note": "报销与付款区别"}
+{"id": "fin-08", "kb_name": "财务报销", "question": "超预算的采购可以先做吗？", "expect_question": "超预算采购能不能先做后批？", "expect_source": "预算管理.txt", "type": "paraphrase", "note": "超预算采购（干扰：预算超支后果）"}
+{"id": "fin-09", "kb_name": "财务报销", "question": "预算结余能转到明年吗？", "expect_question": "预算结余可以结转到下年吗？", "expect_source": "预算管理.txt", "type": "paraphrase", "note": "预算结转"}
+{"id": "hr-05", "kb_name": "人事招聘", "question": "新员工要参加哪些培训？", "expect_question": "新员工有哪些培训？", "expect_source": "培训与发展.txt", "type": "paraphrase", "note": "新员工培训"}
+{"id": "hr-06", "kb_name": "人事招聘", "question": "加班费怎么算？", "expect_question": "加班费怎么计算？", "expect_source": "劳动合同与社保.txt", "type": "paraphrase", "note": "加班费（干扰：加班调休、公司规章加班）"}
+{"id": "hr-07", "kb_name": "人事招聘", "question": "工资几号发？", "expect_question": "工资什么时候发放？", "expect_source": "劳动合同与社保.txt", "type": "paraphrase", "note": "工资发放日"}
+{"id": "hr-08", "kb_name": "人事招聘", "question": "社保什么时候开始交？", "expect_question": "社保什么时候开始缴纳？", "expect_source": "劳动合同与社保.txt", "type": "paraphrase", "note": "社保起缴时间"}
+{"id": "sec-06", "kb_name": "安全合规", "question": "账号可以借给别人用吗？", "expect_question": "账号可以借给他人使用吗？", "expect_source": "账号与权限管理.txt", "type": "paraphrase", "note": "账号借用（干扰：共享账号）"}
+{"id": "sec-07", "kb_name": "安全合规", "question": "需要开多因素认证吗？", "expect_question": "需要开启多因素认证吗？", "expect_source": "账号与权限管理.txt", "type": "paraphrase", "note": "多因素认证"}
+{"id": "sec-08", "kb_name": "安全合规", "question": "数据怎么分级？", "expect_question": "数据如何分级？", "expect_source": "数据分级与保护.txt", "type": "paraphrase", "note": "数据分级"}
+{"id": "sec-09", "kb_name": "安全合规", "question": "测试环境能用生产数据吗？", "expect_question": "测试环境可以使用生产数据吗？", "expect_source": "数据分级与保护.txt", "type": "paraphrase", "note": "生产数据用于测试（干扰：数据导出审批）"}

@@ -1,0 +1,1588 @@
+{
+  "tag": "rerank",
+  "note": "重排 k=4",
+  "generated_at": "2026-10-10T15:34:20",
+  "elapsed_sec": 36.58,
+  "config": {
+    "embedding_model": "E:\\myProject\\KnowledgeBase\\backend\\models\\bge-small-zh-v1.5",
+    "retrieval_k_default": 4,
+    "effective_k": 4,
+    "query_use_instruction": false,
+    "rerank_enabled": true,
+    "rerank_model": "E:\\myProject\\KnowledgeBase\\backend\\models\\bge-reranker-base",
+    "rerank_recall_k": 10
+  },
+  "dataset": {
+    "total": 70,
+    "positive": 67,
+    "negative": 3
+  },
+  "summary": {
+    "count": 67,
+    "hit_rate@1": 1.0,
+    "hit_rate@k": 1.0,
+    "recall@k": 1.0,
+    "mrr": 1.0
+  },
+  "unresolved": [],
+  "negatives": [
+    {
+      "id": "att-08",
+      "question": "公司提供免费午餐吗？",
+      "note": "知识库无该内容，应拒答"
+    },
+    {
+      "id": "ops-07",
+      "question": "VPN 权限怎么申请？",
+      "note": "知识库无该内容，应拒答"
+    },
+    {
+      "id": "ops-08",
+      "question": "可以用 Docker 部署吗？",
+      "note": "知识库无该内容，应拒答"
+    }
+  ],
+  "samples": [
+    {
+      "id": "att-01",
+      "kb_name": "公司规章",
+      "type": "simple",
+      "question": "公司的年假有多少天？",
+      "expected_qa_id": 49,
+      "retrieved_qa_ids": [
+        49,
+        38,
+        39,
+        40
+      ],
+      "retrieved_sources": [
+        "考勤制度.txt",
+        "休假制度.txt",
+        "休假制度.txt",
+        "休假制度.txt"
+      ],
+      "hit1": true,
+      "hitk": true,
+      "recall": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "att-02",
+      "kb_name": "公司规章",
+      "type": "simple",
+      "question": "如何申请年假？",
+      "expected_qa_id": 50,
+      "retrieved_qa_ids": [
+        50,
+        53,
+        134,
+        38
+      ],
+      "retrieved_sources": [
+        "考勤制度.txt",
+        "考勤制度.txt",
+        "员工行为规范.txt",
+        "休假制度.txt"
+      ],
+      "hit1": true,
+      "hitk": true,
+      "recall": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "att-03",
+      "kb_name": "公司规章",
+      "type": "simple",
+      "question": "迟到的处罚是什么？",
+      "expected_qa_id": 51,
+      "retrieved_qa_ids": [
+        51,
+        139,
+        138,
+        58
+      ],
+      "retrieved_sources": [
+        "考勤制度.txt",
+        "奖惩制度.txt",
+        "奖惩制度.txt",
+        "考勤制度.txt"
+      ],
+      "hit1": true,
+      "hitk": true,
+      "recall": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "att-04",
+      "kb_name": "公司规章",
+      "type": "paraphrase",
+      "question": "年假一般能休几天？",
+      "expected_qa_id": 49,
+      "retrieved_qa_ids": [
+        49,
+        38,
+        57,
+        42
+      ],
+      "retrieved_sources": [
+        "考勤制度.txt",
+        "休假制度.txt",
+        "考勤制度.txt",
+        "休假制度.txt"
+      ],
+      "hit1": true,
+      "hitk": true,
+      "recall": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "att-05",
+      "kb_name": "公司规章",
+      "type": "paraphrase",
+      "question": "加班了能不能换成调休？",
+      "expected_qa_id": 52,
+      "retrieved_qa_ids": [
+        52,
+        57,
+        134,
+        42
+      ],
+      "retrieved_sources": [
+        "考勤制度.txt",
+        "考勤制度.txt",
+        "员工行为规范.txt",
+        "休假制度.txt"
+      ],
+      "hit1": true,
+      "hitk": true,
+      "recall": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "att-06",
+      "kb_name": "公司规章",
+      "type": "paraphrase",
+      "question": "请假要提前几天说？",
+      "expected_qa_id": 53,
+      "retrieved_qa_ids": [
+        53,
+        38,
+        56,
+        40
+      ],
+      "retrieved_sources": [
+        "考勤制度.txt",
+        "休假制度.txt",
+        "考勤制度.txt",
+        "休假制度.txt"
+      ],
+      "hit1": true,
+      "hitk": true,
+      "recall": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "att-07",
+      "kb_name": "公司规章",
+      "type": "paraphrase",
+      "question": "年假怎么走流程申请？",
+      "expected_qa_id": 50,
+      "retrieved_qa_ids": [
+        50,
+        53,
+        134,
+        42
+      ],
+      "retrieved_sources": [
+        "考勤制度.txt",
+        "考勤制度.txt",
+        "员工行为规范.txt",
+        "休假制度.txt"
+      ],
+      "hit1": true,
+      "hitk": true,
+      "recall": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "att-09",
+      "kb_name": "公司规章",
+      "type": "paraphrase",
+      "question": "旷工会怎么处理？",
+      "expected_qa_id": 58,
+      "retrieved_qa_ids": [
+        58,
+        137,
+        140,
+        48
+      ],
+      "retrieved_sources": [
+        "考勤制度.txt",
+        "奖惩制度.txt",
+        "奖惩制度.txt",
+        "保密与信息管理规定.txt"
+      ],
+      "hit1": true,
+      "hitk": true,
+      "recall": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "att-10",
+      "kb_name": "公司规章",
+      "type": "paraphrase",
+      "question": "忘记打卡了该怎么办？",
+      "expected_qa_id": 55,
+      "retrieved_qa_ids": [
+        55,
+        129,
+        58,
+        54
+      ],
+      "retrieved_sources": [
+        "考勤制度.txt",
+        "员工行为规范.txt",
+        "考勤制度.txt",
+        "考勤制度.txt"
+      ],
+      "hit1": true,
+      "hitk": true,
+      "recall": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "att-11",
+      "kb_name": "公司规章",
+      "type": "paraphrase",
+      "question": "调休有有效期限制吗？",
+      "expected_qa_id": 57,
+      "retrieved_qa_ids": [
+        57,
+        42,
+        40,
+        44
+      ],
+      "retrieved_sources": [
+        "考勤制度.txt",
+        "休假制度.txt",
+        "休假制度.txt",
+        "休假制度.txt"
+      ],
+      "hit1": true,
+      "hitk": true,
+      "recall": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "att-12",
+      "kb_name": "公司规章",
+      "type": "simple",
+      "question": "加班需要提前申请吗？",
+      "expected_qa_id": 56,
+      "retrieved_qa_ids": [
+        56,
+        52,
+        53,
+        134
+      ],
+      "retrieved_sources": [
+        "考勤制度.txt",
+        "考勤制度.txt",
+        "考勤制度.txt",
+        "员工行为规范.txt"
+      ],
+      "hit1": true,
+      "hitk": true,
+      "recall": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "att-13",
+      "kb_name": "公司规章",
+      "type": "simple",
+      "question": "婚假有多少天？",
+      "expected_qa_id": 38,
+      "retrieved_qa_ids": [
+        38,
+        41,
+        44,
+        40
+      ],
+      "retrieved_sources": [
+        "休假制度.txt",
+        "休假制度.txt",
+        "休假制度.txt",
+        "休假制度.txt"
+      ],
+      "hit1": true,
+      "hitk": true,
+      "recall": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "att-14",
+      "kb_name": "公司规章",
+      "type": "paraphrase",
+      "question": "陪产假是多少天？",
+      "expected_qa_id": 40,
+      "retrieved_qa_ids": [
+        40,
+        39,
+        44,
+        41
+      ],
+      "retrieved_sources": [
+        "休假制度.txt",
+        "休假制度.txt",
+        "休假制度.txt",
+        "休假制度.txt"
+      ],
+      "hit1": true,
+      "hitk": true,
+      "recall": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "att-15",
+      "kb_name": "公司规章",
+      "type": "paraphrase",
+      "question": "年假能不能跨年使用？",
+      "expected_qa_id": 42,
+      "retrieved_qa_ids": [
+        42,
+        50,
+        49,
+        38
+      ],
+      "retrieved_sources": [
+        "休假制度.txt",
+        "考勤制度.txt",
+        "考勤制度.txt",
+        "休假制度.txt"
+      ],
+      "hit1": true,
+      "hitk": true,
+      "recall": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "att-16",
+      "kb_name": "公司规章",
+      "type": "paraphrase",
+      "question": "事假扣工资吗？",
+      "expected_qa_id": 44,
+      "retrieved_qa_ids": [
+        44,
+        43,
+        58,
+        51
+      ],
+      "retrieved_sources": [
+        "休假制度.txt",
+        "休假制度.txt",
+        "考勤制度.txt",
+        "考勤制度.txt"
+      ],
+      "hit1": true,
+      "hitk": true,
+      "recall": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "att-17",
+      "kb_name": "公司规章",
+      "type": "paraphrase",
+      "question": "离职时公司资料要归还吗？",
+      "expected_qa_id": 47,
+      "retrieved_qa_ids": [
+        47,
+        143,
+        58,
+        46
+      ],
+      "retrieved_sources": [
+        "保密与信息管理规定.txt",
+        "奖惩制度.txt",
+        "考勤制度.txt",
+        "保密与信息管理规定.txt"
+      ],
+      "hit1": true,
+      "hitk": true,
+      "recall": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "att-18",
+      "kb_name": "公司规章",
+      "type": "paraphrase",
+      "question": "违规泄露机密会有什么后果？",
+      "expected_qa_id": 48,
+      "retrieved_qa_ids": [
+        48,
+        140,
+        139,
+        141
+      ],
+      "retrieved_sources": [
+        "保密与信息管理规定.txt",
+        "奖惩制度.txt",
+        "奖惩制度.txt",
+        "奖惩制度.txt"
+      ],
+      "hit1": true,
+      "hitk": true,
+      "recall": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "ops-01",
+      "kb_name": "公司运维",
+      "type": "simple",
+      "question": "生产服务器上如何重启一个服务？",
+      "expected_qa_id": 65,
+      "retrieved_qa_ids": [
+        65,
+        69,
+        70,
+        144
+      ],
+      "retrieved_sources": [
+        "服务器操作.txt",
+        "服务器操作.txt",
+        "服务器操作.txt",
+        "故障应急处理.txt"
+      ],
+      "hit1": true,
+      "hitk": true,
+      "recall": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "ops-02",
+      "kb_name": "公司运维",
+      "type": "simple",
+      "question": "数据库备份在哪里？",
+      "expected_qa_id": 66,
+      "retrieved_qa_ids": [
+        66,
+        60,
+        160,
+        72
+      ],
+      "retrieved_sources": [
+        "服务器操作.txt",
+        "数据库运维.txt",
+        "云资源与成本.txt",
+        "服务器操作.txt"
+      ],
+      "hit1": true,
+      "hitk": true,
+      "recall": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "ops-03",
+      "kb_name": "公司运维",
+      "type": "simple",
+      "question": "部署新版本应用的流程是什么？",
+      "expected_qa_id": 67,
+      "retrieved_qa_ids": [
+        67,
+        76,
+        79,
+        152
+      ],
+      "retrieved_sources": [
+        "服务器操作.txt",
+        "网络与安全运维.txt",
+        "网络与安全运维.txt",
+        "故障应急处理.txt"
+      ],
+      "hit1": true,
+      "hitk": true,
+      "recall": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "ops-04",
+      "kb_name": "公司运维",
+      "type": "paraphrase",
+      "question": "服务器磁盘报警了该怎么办？",
+      "expected_qa_id": 68,
+      "retrieved_qa_ids": [
+        68,
+        79,
+        78,
+        144
+      ],
+      "retrieved_sources": [
+        "服务器操作.txt",
+        "网络与安全运维.txt",
+        "网络与安全运维.txt",
+        "故障应急处理.txt"
+      ],
+      "hit1": true,
+      "hitk": true,
+      "recall": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "ops-05",
+      "kb_name": "公司运维",
+      "type": "paraphrase",
+      "question": "发布新版本要走哪些步骤？",
+      "expected_qa_id": 67,
+      "retrieved_qa_ids": [
+        67,
+        76,
+        77,
+        70
+      ],
+      "retrieved_sources": [
+        "服务器操作.txt",
+        "网络与安全运维.txt",
+        "网络与安全运维.txt",
+        "服务器操作.txt"
+      ],
+      "hit1": true,
+      "hitk": true,
+      "recall": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "ops-06",
+      "kb_name": "公司运维",
+      "type": "paraphrase",
+      "question": "数据库的备份文件放在哪个目录？",
+      "expected_qa_id": 66,
+      "retrieved_qa_ids": [
+        66,
+        60,
+        71,
+        150
+      ],
+      "retrieved_sources": [
+        "服务器操作.txt",
+        "数据库运维.txt",
+        "服务器操作.txt",
+        "故障应急处理.txt"
+      ],
+      "hit1": true,
+      "hitk": true,
+      "recall": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "ops-09",
+      "kb_name": "公司运维",
+      "type": "paraphrase",
+      "question": "收到 CPU 告警怎么处理？",
+      "expected_qa_id": 79,
+      "retrieved_qa_ids": [
+        79,
+        68,
+        78,
+        157
+      ],
+      "retrieved_sources": [
+        "网络与安全运维.txt",
+        "服务器操作.txt",
+        "网络与安全运维.txt",
+        "云资源与成本.txt"
+      ],
+      "hit1": true,
+      "hitk": true,
+      "recall": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "ops-10",
+      "kb_name": "公司运维",
+      "type": "simple",
+      "question": "备份文件保留多久？",
+      "expected_qa_id": 61,
+      "retrieved_qa_ids": [
+        61,
+        66,
+        71,
+        151
+      ],
+      "retrieved_sources": [
+        "数据库运维.txt",
+        "服务器操作.txt",
+        "服务器操作.txt",
+        "故障应急处理.txt"
+      ],
+      "hit1": true,
+      "hitk": true,
+      "recall": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "ops-11",
+      "kb_name": "公司运维",
+      "type": "simple",
+      "question": "备份如何恢复？",
+      "expected_qa_id": 60,
+      "retrieved_qa_ids": [
+        60,
+        151,
+        150,
+        66
+      ],
+      "retrieved_sources": [
+        "数据库运维.txt",
+        "故障应急处理.txt",
+        "故障应急处理.txt",
+        "服务器操作.txt"
+      ],
+      "hit1": true,
+      "hitk": true,
+      "recall": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "ops-12",
+      "kb_name": "公司运维",
+      "type": "paraphrase",
+      "question": "灰度发布是什么意思？",
+      "expected_qa_id": 76,
+      "retrieved_qa_ids": [
+        76,
+        67,
+        77,
+        155
+      ],
+      "retrieved_sources": [
+        "网络与安全运维.txt",
+        "服务器操作.txt",
+        "网络与安全运维.txt",
+        "云资源与成本.txt"
+      ],
+      "hit1": true,
+      "hitk": true,
+      "recall": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "ops-13",
+      "kb_name": "公司运维",
+      "type": "simple",
+      "question": "发布失败如何回滚？",
+      "expected_qa_id": 77,
+      "retrieved_qa_ids": [
+        77,
+        76,
+        151,
+        67
+      ],
+      "retrieved_sources": [
+        "网络与安全运维.txt",
+        "网络与安全运维.txt",
+        "故障应急处理.txt",
+        "服务器操作.txt"
+      ],
+      "hit1": true,
+      "hitk": true,
+      "recall": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "ops-14",
+      "kb_name": "公司运维",
+      "type": "simple",
+      "question": "服务日志在哪里查看？",
+      "expected_qa_id": 71,
+      "retrieved_qa_ids": [
+        71,
+        62,
+        72,
+        144
+      ],
+      "retrieved_sources": [
+        "服务器操作.txt",
+        "数据库运维.txt",
+        "服务器操作.txt",
+        "故障应急处理.txt"
+      ],
+      "hit1": true,
+      "hitk": true,
+      "recall": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "ops-15",
+      "kb_name": "公司运维",
+      "type": "paraphrase",
+      "question": "跳板机会录屏吗？",
+      "expected_qa_id": 75,
+      "retrieved_qa_ids": [
+        75,
+        69,
+        79,
+        152
+      ],
+      "retrieved_sources": [
+        "网络与安全运维.txt",
+        "服务器操作.txt",
+        "网络与安全运维.txt",
+        "故障应急处理.txt"
+      ],
+      "hit1": true,
+      "hitk": true,
+      "recall": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "ops-16",
+      "kb_name": "公司运维",
+      "type": "simple",
+      "question": "可以个人直连生产数据库吗？",
+      "expected_qa_id": 63,
+      "retrieved_qa_ids": [
+        63,
+        72,
+        69,
+        154
+      ],
+      "retrieved_sources": [
+        "数据库运维.txt",
+        "服务器操作.txt",
+        "服务器操作.txt",
+        "云资源与成本.txt"
+      ],
+      "hit1": true,
+      "hitk": true,
+      "recall": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "fin-01",
+      "kb_name": "财务报销",
+      "type": "simple",
+      "question": "差旅住宿标准是多少？",
+      "expected_qa_id": 121,
+      "retrieved_qa_ids": [
+        121,
+        105,
+        110,
+        122
+      ],
+      "retrieved_sources": [
+        "费用与借款.txt",
+        "报销制度.txt",
+        "报销制度.txt",
+        "费用与借款.txt"
+      ],
+      "hit1": true,
+      "hitk": true,
+      "recall": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "fin-02",
+      "kb_name": "财务报销",
+      "type": "paraphrase",
+      "question": "报销一般多久到账？",
+      "expected_qa_id": 108,
+      "retrieved_qa_ids": [
+        108,
+        116,
+        103,
+        106
+      ],
+      "retrieved_sources": [
+        "报销制度.txt",
+        "费用与借款.txt",
+        "报销制度.txt",
+        "报销制度.txt"
+      ],
+      "hit1": true,
+      "hitk": true,
+      "recall": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "fin-03",
+      "kb_name": "财务报销",
+      "type": "paraphrase",
+      "question": "借款什么时候要还？",
+      "expected_qa_id": 116,
+      "retrieved_qa_ids": [
+        116,
+        167,
+        115,
+        108
+      ],
+      "retrieved_sources": [
+        "费用与借款.txt",
+        "付款与合同.txt",
+        "费用与借款.txt",
+        "报销制度.txt"
+      ],
+      "hit1": true,
+      "hitk": true,
+      "recall": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "fin-04",
+      "kb_name": "财务报销",
+      "type": "paraphrase",
+      "question": "加班餐费能报销吗？",
+      "expected_qa_id": 113,
+      "retrieved_qa_ids": [
+        113,
+        106,
+        105,
+        110
+      ],
+      "retrieved_sources": [
+        "报销制度.txt",
+        "报销制度.txt",
+        "报销制度.txt",
+        "报销制度.txt"
+      ],
+      "hit1": true,
+      "hitk": true,
+      "recall": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "fin-05",
+      "kb_name": "财务报销",
+      "type": "simple",
+      "question": "电子发票可以报销吗？",
+      "expected_qa_id": 109,
+      "retrieved_qa_ids": [
+        109,
+        112,
+        111,
+        106
+      ],
+      "retrieved_sources": [
+        "报销制度.txt",
+        "报销制度.txt",
+        "报销制度.txt",
+        "报销制度.txt"
+      ],
+      "hit1": true,
+      "hitk": true,
+      "recall": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "hr-01",
+      "kb_name": "人事招聘",
+      "type": "paraphrase",
+      "question": "员工请假怎么走流程？",
+      "expected_qa_id": 21,
+      "retrieved_qa_ids": [
+        21,
+        28,
+        27,
+        24
+      ],
+      "retrieved_sources": [
+        "员工管理.txt",
+        "招聘流程.txt",
+        "员工管理.txt",
+        "员工管理.txt"
+      ],
+      "hit1": true,
+      "hitk": true,
+      "recall": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "hr-02",
+      "kb_name": "人事招聘",
+      "type": "paraphrase",
+      "question": "试用期一般是多久？",
+      "expected_qa_id": 34,
+      "retrieved_qa_ids": [
+        34,
+        37,
+        36,
+        24
+      ],
+      "retrieved_sources": [
+        "招聘流程.txt",
+        "招聘流程.txt",
+        "招聘流程.txt",
+        "员工管理.txt"
+      ],
+      "hit1": true,
+      "hitk": true,
+      "recall": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "hr-03",
+      "kb_name": "人事招聘",
+      "type": "paraphrase",
+      "question": "离职要提前多久提？",
+      "expected_qa_id": 24,
+      "retrieved_qa_ids": [
+        24,
+        184,
+        196,
+        34
+      ],
+      "retrieved_sources": [
+        "员工管理.txt",
+        "培训与发展.txt",
+        "劳动合同与社保.txt",
+        "招聘流程.txt"
+      ],
+      "hit1": true,
+      "hitk": true,
+      "recall": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "hr-04",
+      "kb_name": "人事招聘",
+      "type": "paraphrase",
+      "question": "offer 的审批流程是什么？",
+      "expected_qa_id": 32,
+      "retrieved_qa_ids": [
+        32,
+        28,
+        29,
+        35
+      ],
+      "retrieved_sources": [
+        "招聘流程.txt",
+        "招聘流程.txt",
+        "招聘流程.txt",
+        "招聘流程.txt"
+      ],
+      "hit1": true,
+      "hitk": true,
+      "recall": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "sec-01",
+      "kb_name": "安全合规",
+      "type": "paraphrase",
+      "question": "审计日志要保留多久？",
+      "expected_qa_id": 93,
+      "retrieved_qa_ids": [
+        93,
+        215,
+        209,
+        216
+      ],
+      "retrieved_sources": [
+        "合规与审计.txt",
+        "数据分级与保护.txt",
+        "账号与权限管理.txt",
+        "数据分级与保护.txt"
+      ],
+      "hit1": true,
+      "hitk": true,
+      "recall": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "sec-02",
+      "kb_name": "安全合规",
+      "type": "paraphrase",
+      "question": "弱密码可以用吗？",
+      "expected_qa_id": 82,
+      "retrieved_qa_ids": [
+        82,
+        207,
+        100,
+        88
+      ],
+      "retrieved_sources": [
+        "信息安全制度.txt",
+        "账号与权限管理.txt",
+        "合规与审计.txt",
+        "信息安全制度.txt"
+      ],
+      "hit1": true,
+      "hitk": true,
+      "recall": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "sec-03",
+      "kb_name": "安全合规",
+      "type": "simple",
+      "question": "重要数据需要备份吗？",
+      "expected_qa_id": 90,
+      "retrieved_qa_ids": [
+        90,
+        212,
+        215,
+        213
+      ],
+      "retrieved_sources": [
+        "信息安全制度.txt",
+        "数据分级与保护.txt",
+        "数据分级与保护.txt",
+        "数据分级与保护.txt"
+      ],
+      "hit1": true,
+      "hitk": true,
+      "recall": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "sec-04",
+      "kb_name": "安全合规",
+      "type": "paraphrase",
+      "question": "离职后账号怎么处理？",
+      "expected_qa_id": 97,
+      "retrieved_qa_ids": [
+        97,
+        205,
+        209,
+        206
+      ],
+      "retrieved_sources": [
+        "合规与审计.txt",
+        "账号与权限管理.txt",
+        "账号与权限管理.txt",
+        "账号与权限管理.txt"
+      ],
+      "hit1": true,
+      "hitk": true,
+      "recall": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "sec-05",
+      "kb_name": "安全合规",
+      "type": "paraphrase",
+      "question": "办公电脑能装私人软件吗？",
+      "expected_qa_id": 87,
+      "retrieved_qa_ids": [
+        87,
+        85,
+        84,
+        88
+      ],
+      "retrieved_sources": [
+        "信息安全制度.txt",
+        "信息安全制度.txt",
+        "信息安全制度.txt",
+        "信息安全制度.txt"
+      ],
+      "hit1": true,
+      "hitk": true,
+      "recall": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "att-19",
+      "kb_name": "公司规章",
+      "type": "paraphrase",
+      "question": "全勤奖怎么算？",
+      "expected_qa_id": 137,
+      "retrieved_qa_ids": [
+        137,
+        136,
+        135,
+        44
+      ],
+      "retrieved_sources": [
+        "奖惩制度.txt",
+        "奖惩制度.txt",
+        "奖惩制度.txt",
+        "休假制度.txt"
+      ],
+      "hit1": true,
+      "hitk": true,
+      "recall": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "att-20",
+      "kb_name": "公司规章",
+      "type": "paraphrase",
+      "question": "迟到会不会影响全勤奖？",
+      "expected_qa_id": 138,
+      "retrieved_qa_ids": [
+        138,
+        51,
+        137,
+        139
+      ],
+      "retrieved_sources": [
+        "奖惩制度.txt",
+        "考勤制度.txt",
+        "奖惩制度.txt",
+        "奖惩制度.txt"
+      ],
+      "hit1": true,
+      "hitk": true,
+      "recall": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "att-21",
+      "kb_name": "公司规章",
+      "type": "simple",
+      "question": "严重违纪包括哪些行为？",
+      "expected_qa_id": 140,
+      "retrieved_qa_ids": [
+        140,
+        139,
+        58,
+        142
+      ],
+      "retrieved_sources": [
+        "奖惩制度.txt",
+        "奖惩制度.txt",
+        "考勤制度.txt",
+        "奖惩制度.txt"
+      ],
+      "hit1": true,
+      "hitk": true,
+      "recall": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "att-22",
+      "kb_name": "公司规章",
+      "type": "paraphrase",
+      "question": "办公室能穿拖鞋吗？",
+      "expected_qa_id": 130,
+      "retrieved_qa_ids": [
+        130,
+        127,
+        46,
+        128
+      ],
+      "retrieved_sources": [
+        "员工行为规范.txt",
+        "员工行为规范.txt",
+        "保密与信息管理规定.txt",
+        "员工行为规范.txt"
+      ],
+      "hit1": true,
+      "hitk": true,
+      "recall": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "att-23",
+      "kb_name": "公司规章",
+      "type": "paraphrase",
+      "question": "工牌丢了怎么办？",
+      "expected_qa_id": 129,
+      "retrieved_qa_ids": [
+        129,
+        48,
+        58,
+        142
+      ],
+      "retrieved_sources": [
+        "员工行为规范.txt",
+        "保密与信息管理规定.txt",
+        "考勤制度.txt",
+        "奖惩制度.txt"
+      ],
+      "hit1": true,
+      "hitk": true,
+      "recall": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "ops-17",
+      "kb_name": "公司运维",
+      "type": "paraphrase",
+      "question": "线上服务挂了先做什么？",
+      "expected_qa_id": 144,
+      "retrieved_qa_ids": [
+        144,
+        145,
+        155,
+        59
+      ],
+      "retrieved_sources": [
+        "故障应急处理.txt",
+        "故障应急处理.txt",
+        "云资源与成本.txt",
+        "数据库运维.txt"
+      ],
+      "hit1": true,
+      "hitk": true,
+      "recall": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "ops-18",
+      "kb_name": "公司运维",
+      "type": "paraphrase",
+      "question": "P0 故障多久要响应？",
+      "expected_qa_id": 147,
+      "retrieved_qa_ids": [
+        147,
+        152,
+        148,
+        146
+      ],
+      "retrieved_sources": [
+        "故障应急处理.txt",
+        "故障应急处理.txt",
+        "故障应急处理.txt",
+        "故障应急处理.txt"
+      ],
+      "hit1": true,
+      "hitk": true,
+      "recall": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "ops-19",
+      "kb_name": "公司运维",
+      "type": "paraphrase",
+      "question": "数据库宕机了怎么办？",
+      "expected_qa_id": 150,
+      "retrieved_qa_ids": [
+        150,
+        72,
+        151,
+        144
+      ],
+      "retrieved_sources": [
+        "故障应急处理.txt",
+        "服务器操作.txt",
+        "故障应急处理.txt",
+        "故障应急处理.txt"
+      ],
+      "hit1": true,
+      "hitk": true,
+      "recall": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "ops-20",
+      "kb_name": "公司运维",
+      "type": "paraphrase",
+      "question": "云主机怎么申请？",
+      "expected_qa_id": 153,
+      "retrieved_qa_ids": [
+        153,
+        73,
+        158,
+        154
+      ],
+      "retrieved_sources": [
+        "云资源与成本.txt",
+        "服务器操作.txt",
+        "云资源与成本.txt",
+        "云资源与成本.txt"
+      ],
+      "hit1": true,
+      "hitk": true,
+      "recall": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "ops-21",
+      "kb_name": "公司运维",
+      "type": "paraphrase",
+      "question": "证书快到期了怎么办？",
+      "expected_qa_id": 159,
+      "retrieved_qa_ids": [
+        159,
+        72,
+        158,
+        156
+      ],
+      "retrieved_sources": [
+        "云资源与成本.txt",
+        "服务器操作.txt",
+        "云资源与成本.txt",
+        "云资源与成本.txt"
+      ],
+      "hit1": true,
+      "hitk": true,
+      "recall": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "fin-06",
+      "kb_name": "财务报销",
+      "type": "paraphrase",
+      "question": "供应商怎么引入？",
+      "expected_qa_id": 164,
+      "retrieved_qa_ids": [
+        164,
+        115,
+        162,
+        117
+      ],
+      "retrieved_sources": [
+        "付款与合同.txt",
+        "费用与借款.txt",
+        "付款与合同.txt",
+        "费用与借款.txt"
+      ],
+      "hit1": true,
+      "hitk": true,
+      "recall": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "fin-07",
+      "kb_name": "财务报销",
+      "type": "simple",
+      "question": "报销和付款有什么区别？",
+      "expected_qa_id": 165,
+      "retrieved_qa_ids": [
+        165,
+        117,
+        177,
+        162
+      ],
+      "retrieved_sources": [
+        "付款与合同.txt",
+        "费用与借款.txt",
+        "预算管理.txt",
+        "付款与合同.txt"
+      ],
+      "hit1": true,
+      "hitk": true,
+      "recall": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "fin-08",
+      "kb_name": "财务报销",
+      "type": "paraphrase",
+      "question": "超预算的采购可以先做吗？",
+      "expected_qa_id": 175,
+      "retrieved_qa_ids": [
+        175,
+        119,
+        166,
+        179
+      ],
+      "retrieved_sources": [
+        "预算管理.txt",
+        "费用与借款.txt",
+        "付款与合同.txt",
+        "预算管理.txt"
+      ],
+      "hit1": true,
+      "hitk": true,
+      "recall": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "fin-09",
+      "kb_name": "财务报销",
+      "type": "paraphrase",
+      "question": "预算结余能转到明年吗？",
+      "expected_qa_id": 178,
+      "retrieved_qa_ids": [
+        178,
+        175,
+        172,
+        170
+      ],
+      "retrieved_sources": [
+        "预算管理.txt",
+        "预算管理.txt",
+        "预算管理.txt",
+        "预算管理.txt"
+      ],
+      "hit1": true,
+      "hitk": true,
+      "recall": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "hr-05",
+      "kb_name": "人事招聘",
+      "type": "paraphrase",
+      "question": "新员工要参加哪些培训？",
+      "expected_qa_id": 180,
+      "retrieved_qa_ids": [
+        180,
+        19,
+        187,
+        181
+      ],
+      "retrieved_sources": [
+        "培训与发展.txt",
+        "员工管理.txt",
+        "培训与发展.txt",
+        "培训与发展.txt"
+      ],
+      "hit1": true,
+      "hitk": true,
+      "recall": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "hr-06",
+      "kb_name": "人事招聘",
+      "type": "paraphrase",
+      "question": "加班费怎么算？",
+      "expected_qa_id": 195,
+      "retrieved_qa_ids": [
+        195,
+        27,
+        193,
+        197
+      ],
+      "retrieved_sources": [
+        "劳动合同与社保.txt",
+        "员工管理.txt",
+        "劳动合同与社保.txt",
+        "劳动合同与社保.txt"
+      ],
+      "hit1": true,
+      "hitk": true,
+      "recall": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "hr-07",
+      "kb_name": "人事招聘",
+      "type": "paraphrase",
+      "question": "工资几号发？",
+      "expected_qa_id": 196,
+      "retrieved_qa_ids": [
+        196,
+        198,
+        190,
+        192
+      ],
+      "retrieved_sources": [
+        "劳动合同与社保.txt",
+        "劳动合同与社保.txt",
+        "劳动合同与社保.txt",
+        "劳动合同与社保.txt"
+      ],
+      "hit1": true,
+      "hitk": true,
+      "recall": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "hr-08",
+      "kb_name": "人事招聘",
+      "type": "paraphrase",
+      "question": "社保什么时候开始交？",
+      "expected_qa_id": 192,
+      "retrieved_qa_ids": [
+        192,
+        196,
+        190,
+        198
+      ],
+      "retrieved_sources": [
+        "劳动合同与社保.txt",
+        "劳动合同与社保.txt",
+        "劳动合同与社保.txt",
+        "劳动合同与社保.txt"
+      ],
+      "hit1": true,
+      "hitk": true,
+      "recall": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "sec-06",
+      "kb_name": "安全合规",
+      "type": "paraphrase",
+      "question": "账号可以借给别人用吗？",
+      "expected_qa_id": 202,
+      "retrieved_qa_ids": [
+        202,
+        204,
+        201,
+        82
+      ],
+      "retrieved_sources": [
+        "账号与权限管理.txt",
+        "账号与权限管理.txt",
+        "账号与权限管理.txt",
+        "信息安全制度.txt"
+      ],
+      "hit1": true,
+      "hitk": true,
+      "recall": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "sec-07",
+      "kb_name": "安全合规",
+      "type": "paraphrase",
+      "question": "需要开多因素认证吗？",
+      "expected_qa_id": 208,
+      "retrieved_qa_ids": [
+        208,
+        99,
+        203,
+        210
+      ],
+      "retrieved_sources": [
+        "账号与权限管理.txt",
+        "合规与审计.txt",
+        "账号与权限管理.txt",
+        "数据分级与保护.txt"
+      ],
+      "hit1": true,
+      "hitk": true,
+      "recall": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "sec-08",
+      "kb_name": "安全合规",
+      "type": "paraphrase",
+      "question": "数据怎么分级？",
+      "expected_qa_id": 210,
+      "retrieved_qa_ids": [
+        210,
+        211,
+        98,
+        92
+      ],
+      "retrieved_sources": [
+        "数据分级与保护.txt",
+        "数据分级与保护.txt",
+        "合规与审计.txt",
+        "合规与审计.txt"
+      ],
+      "hit1": true,
+      "hitk": true,
+      "recall": 1.0,
+      "rr": 1.0
+    },
+    {
+      "id": "sec-09",
+      "kb_name": "安全合规",
+      "type": "paraphrase",
+      "question": "测试环境能用生产数据吗？",
+      "expected_qa_id": 214,
+      "retrieved_qa_ids": [
+        214,
+        92,
+        213,
+        210
+      ],
+      "retrieved_sources": [
+        "数据分级与保护.txt",
+        "合规与审计.txt",
+        "数据分级与保护.txt",
+        "数据分级与保护.txt"
+      ],
+      "hit1": true,
+      "hitk": true,
+      "recall": 1.0,
+      "rr": 1.0
+    }
+  ]
+}

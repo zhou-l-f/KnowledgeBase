@@ -1,0 +1,14 @@
+fastapi
+uvicorn[standard]
+# /document 上传接口需要 multipart 支持
+python-multipart
+pydantic-settings
+pyjwt
+langchain
+langchain-openai
+langchain-chroma
+langgraph
+chromadb
+langchain-huggingface
+# bge 模型为 ST 2.x 旧格式，6.x 不兼容，固定 3.x
+sentence-transformers>=3.4,<4

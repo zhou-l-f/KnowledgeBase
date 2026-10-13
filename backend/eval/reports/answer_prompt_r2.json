@@ -1,0 +1,1124 @@
+{
+  "tag": "answer_prompt_r2",
+  "note": "复跑：验证 LLM 判定波动（同配置）",
+  "generated_at": "2026-10-10T15:50:33",
+  "elapsed_sec": 51.52,
+  "config": {
+    "deepseek_model": "deepseek-flash",
+    "retrieval_k": 2,
+    "rerank_enabled": true,
+    "concurrency": 6
+  },
+  "summary": {
+    "positive_count": 67,
+    "negative_count": 3,
+    "error_count": 0,
+    "correctness": 1.0,
+    "faithfulness": 1.0,
+    "refusal_accuracy": 1.0,
+    "correctness_dist": {
+      "correct": 67
+    },
+    "faithfulness_dist": {
+      "faithful": 67
+    }
+  },
+  "samples": [
+    {
+      "id": "att-01",
+      "kb_name": "公司规章",
+      "type": "simple",
+      "question": "公司的年假有多少天？",
+      "answer": "员工入职满一年可享受 5 天带薪年假；工作满 10 年的员工可享受 10 天。",
+      "reference": "员工入职满一年可享受 5 天带薪年假；工作满 10 年的员工可享受 10 天。\n",
+      "correctness": {
+        "verdict": "correct",
+        "score": 1.0
+      },
+      "faithfulness": {
+        "verdict": "faithful",
+        "score": 1.0
+      }
+    },
+    {
+      "id": "att-02",
+      "kb_name": "公司规章",
+      "type": "simple",
+      "question": "如何申请年假？",
+      "answer": "在 OA 系统中提交年假申请单，经直属领导审批通过后生效。审批通过前请勿擅自休假。",
+      "reference": "在 OA 系统中提交年假申请单，经直属领导审批通过后生效。审批通过前请勿擅自休假。\n",
+      "correctness": {
+        "verdict": "correct",
+        "score": 1.0
+      },
+      "faithfulness": {
+        "verdict": "faithful",
+        "score": 1.0
+      }
+    },
+    {
+      "id": "att-03",
+      "kb_name": "公司规章",
+      "type": "simple",
+      "question": "迟到的处罚是什么？",
+      "answer": "单月迟到累计 3 次以内，每次扣绩效 0.5 分；超过 3 次的部分，每次扣 1 分，并取消当月全勤奖。",
+      "reference": "单月迟到累计 3 次以内每次扣绩效 0.5 分；超过 3 次的部分每次扣 1 分，并取消当月全勤奖。\n",
+      "correctness": {
+        "verdict": "correct",
+        "score": 1.0
+      },
+      "faithfulness": {
+        "verdict": "faithful",
+        "score": 1.0
+      }
+    },
+    {
+      "id": "att-04",
+      "kb_name": "公司规章",
+      "type": "paraphrase",
+      "question": "年假一般能休几天？",
+      "answer": "根据资料，员工入职满一年可享受 **5 天**带薪年假；工作满 10 年的员工可享受 **10 天**。",
+      "reference": "员工入职满一年可享受 5 天带薪年假；工作满 10 年的员工可享受 10 天。\n",
+      "correctness": {
+        "verdict": "correct",
+        "score": 1.0
+      },
+      "faithfulness": {
+        "verdict": "faithful",
+        "score": 1.0
+      }
+    },
+    {
+      "id": "att-05",
+      "kb_name": "公司规章",
+      "type": "paraphrase",
+      "question": "加班了能不能换成调休？",
+      "answer": "可以。根据资料：工作日加班超过 2 小时可申请等时调休；周末加班按 1:1.5 折算调休时长。调休需在加班发生后 3 个月内使用完毕，逾期未使用视为自动放弃，不折算薪资。",
+      "reference": "工作日加班超过 2 小时可申请等时调休；周末加班按 1:1.5 折算调休时长。\n",
+      "correctness": {
+        "verdict": "correct",
+        "score": 1.0
+      },
+      "faithfulness": {
+        "verdict": "faithful",
+        "score": 1.0
+      }
+    },
+    {
+      "id": "att-06",
+      "kb_name": "公司规章",
+      "type": "paraphrase",
+      "question": "请假要提前几天说？",
+      "answer": "根据资料：\n- 事假需提前 **1 个工作日**申请。\n- 病假需在 **当天 10 点前**报备，并在 **3 个工作日内**补交医院证明。",
+      "reference": "事假需提前 1 个工作日申请；病假需在当天 10 点前报备，并在 3 个工作日内补交医院证明。\n",
+      "correctness": {
+        "verdict": "correct",
+        "score": 1.0
+      },
+      "faithfulness": {
+        "verdict": "faithful",
+        "score": 1.0
+      }
+    },
+    {
+      "id": "att-07",
+      "kb_name": "公司规章",
+      "type": "paraphrase",
+      "question": "年假怎么走流程申请？",
+      "answer": "根据资料：在 OA 系统中提交年假申请单，经直属领导审批通过后生效。审批通过前请勿擅自休假。",
+      "reference": "在 OA 系统中提交年假申请单，经直属领导审批通过后生效。审批通过前请勿擅自休假。\n",
+      "correctness": {
+        "verdict": "correct",
+        "score": 1.0
+      },
+      "faithfulness": {
+        "verdict": "faithful",
+        "score": 1.0
+      }
+    },
+    {
+      "id": "att-08",
+      "kb_name": "公司规章",
+      "type": "negative",
+      "question": "公司提供免费午餐吗？",
+      "answer": "根据已有资料无法回答",
+      "refusal_correct": true
+    },
+    {
+      "id": "att-09",
+      "kb_name": "公司规章",
+      "type": "paraphrase",
+      "question": "旷工会怎么处理？",
+      "answer": "根据资料，旷工的处理方式如下：\n\n- 无故缺勤按旷工处理。\n- 旷工 1 天扣发 3 天工资。\n- 连续旷工 3 天或年累计 5 天视为严重违纪，公司可解除劳动合同。\n- 全勤奖要求当月无迟到、早退、请假与旷工，随当月工资发放。",
+      "reference": "无故缺勤按旷工处理，旷工 1 天扣发 3 天工资；连续旷工 3 天或年累计 5 天视为严重违纪，公司可解除劳动合同。",
+      "correctness": {
+        "verdict": "correct",
+        "score": 1.0
+      },
+      "faithfulness": {
+        "verdict": "faithful",
+        "score": 1.0
+      }
+    },
+    {
+      "id": "att-10",
+      "kb_name": "公司规章",
+      "type": "paraphrase",
+      "question": "忘记打卡了该怎么办？",
+      "answer": "当天在 OA 提交补卡申请并说明原因，经直属领导确认后生效；每人每月最多补卡 3 次。",
+      "reference": "当天在 OA 提交补卡申请并说明原因，经直属领导确认后生效，每人每月最多补卡 3 次。\n",
+      "correctness": {
+        "verdict": "correct",
+        "score": 1.0
+      },
+      "faithfulness": {
+        "verdict": "faithful",
+        "score": 1.0
+      }
+    },
+    {
+      "id": "att-11",
+      "kb_name": "公司规章",
+      "type": "paraphrase",
+      "question": "调休有有效期限制吗？",
+      "answer": "有。调休需在加班发生后 3 个月内使用完毕；逾期未使用视为自动放弃，不折算薪资。",
+      "reference": "调休需在加班发生后 3 个月内使用完毕，逾期未使用视为自动放弃，不折算薪资。\n",
+      "correctness": {
+        "verdict": "correct",
+        "score": 1.0
+      },
+      "faithfulness": {
+        "verdict": "faithful",
+        "score": 1.0
+      }
+    },
+    {
+      "id": "att-12",
+      "kb_name": "公司规章",
+      "type": "simple",
+      "question": "加班需要提前申请吗？",
+      "answer": "需要。加班须在 OA 提交加班申请并取得直属领导批准，未经批准的自愿延时不计入加班时长。",
+      "reference": "需要。加班须在 OA 提交加班申请并取得直属领导批准，未经批准的自愿延时不计入加班时长。\n",
+      "correctness": {
+        "verdict": "correct",
+        "score": 1.0
+      },
+      "faithfulness": {
+        "verdict": "faithful",
+        "score": 1.0
+      }
+    },
+    {
+      "id": "att-13",
+      "kb_name": "公司规章",
+      "type": "simple",
+      "question": "婚假有多少天？",
+      "answer": "依法办理结婚登记的员工，可享受 10 天带薪婚假，需在登记之日起一年内休完。",
+      "reference": "依法办理结婚登记的员工，可享受 10 天带薪婚假，需在登记之日起一年内休完。\n",
+      "correctness": {
+        "verdict": "correct",
+        "score": 1.0
+      },
+      "faithfulness": {
+        "verdict": "faithful",
+        "score": 1.0
+      }
+    },
+    {
+      "id": "att-14",
+      "kb_name": "公司规章",
+      "type": "paraphrase",
+      "question": "陪产假是多少天？",
+      "answer": "男员工可享受 **15 天陪产假**，须在配偶分娩之日起 **3 个月内**休完。",
+      "reference": "男员工可享受 15 天陪产假，须在配偶分娩之日起 3 个月内休完。\n",
+      "correctness": {
+        "verdict": "correct",
+        "score": 1.0
+      },
+      "faithfulness": {
+        "verdict": "faithful",
+        "score": 1.0
+      }
+    },
+    {
+      "id": "att-15",
+      "kb_name": "公司规章",
+      "type": "paraphrase",
+      "question": "年假能不能跨年使用？",
+      "answer": "根据资料：当年年假原则上应在当年休完；确因工作原因未休完的，经部门负责人批准后可延期至次年 3 月底。",
+      "reference": "当年年假原则上应在当年休完；确因工作原因未休完的，经部门负责人批准后可延期至次年 3 月底。\n",
+      "correctness": {
+        "verdict": "correct",
+        "score": 1.0
+      },
+      "faithfulness": {
+        "verdict": "faithful",
+        "score": 1.0
+      }
+    },
+    {
+      "id": "att-16",
+      "kb_name": "公司规章",
+      "type": "paraphrase",
+      "question": "事假扣工资吗？",
+      "answer": "事假扣工资。根据资料，事假为无薪假，按请假天数扣减当日基本工资；当月累计事假原则上不超过 5 天。",
+      "reference": "事假为无薪假，按请假天数扣减当日基本工资，当月累计事假原则上不超过 5 天。",
+      "correctness": {
+        "verdict": "correct",
+        "score": 1.0
+      },
+      "faithfulness": {
+        "verdict": "faithful",
+        "score": 1.0
+      }
+    },
+    {
+      "id": "att-17",
+      "kb_name": "公司规章",
+      "type": "paraphrase",
+      "question": "离职时公司资料要归还吗？",
+      "answer": "要。根据资料，离职前须归还全部公司资料与设备，并删除个人设备中留存的公司数据，由 HR 与 IT 共同确认。",
+      "reference": "离职前须归还全部公司资料与设备，并删除个人设备中留存的公司数据，由 HR 与 IT 共同确认。\n",
+      "correctness": {
+        "verdict": "correct",
+        "score": 1.0
+      },
+      "faithfulness": {
+        "verdict": "faithful",
+        "score": 1.0
+      }
+    },
+    {
+      "id": "att-18",
+      "kb_name": "公司规章",
+      "type": "paraphrase",
+      "question": "违规泄露机密会有什么后果？",
+      "answer": "根据资料，违规泄露机密的后果为：视情节给予通报批评、绩效扣减直至解除劳动合同；造成实际损失的，公司依法追究赔偿责任。此外，泄露机密属于严重违纪行为之一。",
+      "reference": "视情节给予通报批评、绩效扣减直至解除劳动合同；造成实际损失的，公司依法追究赔偿责任。",
+      "correctness": {
+        "verdict": "correct",
+        "score": 1.0
+      },
+      "faithfulness": {
+        "verdict": "faithful",
+        "score": 1.0
+      }
+    },
+    {
+      "id": "ops-01",
+      "kb_name": "公司运维",
+      "type": "simple",
+      "question": "生产服务器上如何重启一个服务？",
+      "answer": "根据资料：使用 `systemctl restart 服务名` 命令重启。禁止使用 `kill -9` 强杀进程，特殊情况须经运维负责人审批并记录工单。",
+      "reference": "使用 systemctl restart 服务名 命令重启。禁止使用 kill -9 强杀进程，特殊情况须经运维负责人审批并记录工单。\n",
+      "correctness": {
+        "verdict": "correct",
+        "score": 1.0
+      },
+      "faithfulness": {
+        "verdict": "faithful",
+        "score": 1.0
+      }
+    },
+    {
+      "id": "ops-02",
+      "kb_name": "公司运维",
+      "type": "simple",
+      "question": "数据库备份在哪里？",
+      "answer": "数据库备份文件存放在 `/data/backup/mysql/` 目录。数据库每天凌晨 2 点自动全量备份，备份保留 30 天。",
+      "reference": "数据库每天凌晨 2 点自动全量备份，备份文件存放在 /data/backup/mysql/ 目录，保留 30 天。如需恢复请联系运维组。\n",
+      "correctness": {
+        "verdict": "correct",
+        "score": 1.0
+      },
+      "faithfulness": {
+        "verdict": "faithful",
+        "score": 1.0
+      }
+    },
+    {
+      "id": "ops-03",
+      "kb_name": "公司运维",
+      "type": "simple",
+      "question": "部署新版本应用的流程是什么？",
+      "answer": "根据资料，部署新版本应用的流程是：先在预发布环境验证通过，再提交变更工单，由运维在发布窗口（每周四 22:00-24:00）执行灰度发布，观察 15 分钟无异常后全量发布。",
+      "reference": "先在预发布环境验证通过，再提交变更工单，由运维在发布窗口（每周四 22:00-24:00）执行灰度发布，观察 15 分钟无异常后全量发布。\n",
+      "correctness": {
+        "verdict": "correct",
+        "score": 1.0
+      },
+      "faithfulness": {
+        "verdict": "faithful",
+        "score": 1.0
+      }
+    },
+    {
+      "id": "ops-04",
+      "kb_name": "公司运维",
+      "type": "paraphrase",
+      "question": "服务器磁盘报警了该怎么办？",
+      "answer": "收到磁盘使用率超过 80% 的告警后：\n\n1. 先清理 `/var/log` 下的过期日志与 `/tmp` 临时文件；\n2. 若仍超阈值，在工单系统记录并联系基础设施组扩容。",
+      "reference": "收到磁盘使用率超过 80% 的告警后，先清理 /var/log 下的过期日志与 /tmp 临时文件；若仍超阈值，在工单系统记录并联系基础设施组扩容。\n",
+      "correctness": {
+        "verdict": "correct",
+        "score": 1.0
+      },
+      "faithfulness": {
+        "verdict": "faithful",
+        "score": 1.0
+      }
+    },
+    {
+      "id": "ops-05",
+      "kb_name": "公司运维",
+      "type": "paraphrase",
+      "question": "发布新版本要走哪些步骤？",
+      "answer": "根据资料，发布新版本应用的流程是：\n\n1. 先在预发布环境验证通过。\n2. 再提交变更工单。\n3. 由运维在发布窗口（每周四 22:00-24:00）执行灰度发布。\n4. 灰度发布是先把新版本发布给一小部分流量，观察运行无异常后再逐步扩大范围，直至全量上线。\n5. 资料还提到，观察 15 分钟无异常后全量发布。",
+      "reference": "先在预发布环境验证通过，再提交变更工单，由运维在发布窗口（每周四 22:00-24:00）执行灰度发布，观察 15 分钟无异常后全量发布。\n",
+      "correctness": {
+        "verdict": "correct",
+        "score": 1.0
+      },
+      "faithfulness": {
+        "verdict": "faithful",
+        "score": 1.0
+      }
+    },
+    {
+      "id": "ops-06",
+      "kb_name": "公司运维",
+      "type": "paraphrase",
+      "question": "数据库的备份文件放在哪个目录？",
+      "answer": "数据库的备份文件存放在 `/data/backup/mysql/` 目录。",
+      "reference": "数据库每天凌晨 2 点自动全量备份，备份文件存放在 /data/backup/mysql/ 目录，保留 30 天。如需恢复请联系运维组。\n",
+      "correctness": {
+        "verdict": "correct",
+        "score": 1.0
+      },
+      "faithfulness": {
+        "verdict": "faithful",
+        "score": 1.0
+      }
+    },
+    {
+      "id": "ops-07",
+      "kb_name": "公司运维",
+      "type": "negative",
+      "question": "VPN 权限怎么申请？",
+      "answer": "根据已有资料无法回答",
+      "refusal_correct": true
+    },
+    {
+      "id": "ops-08",
+      "kb_name": "公司运维",
+      "type": "negative",
+      "question": "可以用 Docker 部署吗？",
+      "answer": "根据已有资料无法回答",
+      "refusal_correct": true
+    },
+    {
+      "id": "ops-09",
+      "kb_name": "公司运维",
+      "type": "paraphrase",
+      "question": "收到 CPU 告警怎么处理？",
+      "answer": "先登录目标服务器，用 top、pidstat 等工具定位高负载进程，确认是异常任务还是正常业务峰值，再决定限流或扩容。",
+      "reference": "先登录目标服务器，用 top、pidstat 等工具定位高负载进程，确认是异常任务还是正常业务峰值，再决定限流或扩容。\n",
+      "correctness": {
+        "verdict": "correct",
+        "score": 1.0
+      },
+      "faithfulness": {
+        "verdict": "faithful",
+        "score": 1.0
+      }
+    },
+    {
+      "id": "ops-10",
+      "kb_name": "公司运维",
+      "type": "simple",
+      "question": "备份文件保留多久？",
+      "answer": "全量备份默认保留 30 天，超过期限的自动清理；需要长期归档的须另行提出申请。",
+      "reference": "全量备份默认保留 30 天，超过期限的自动清理；需要长期归档的须另行提出申请。\n",
+      "correctness": {
+        "verdict": "correct",
+        "score": 1.0
+      },
+      "faithfulness": {
+        "verdict": "faithful",
+        "score": 1.0
+      }
+    },
+    {
+      "id": "ops-11",
+      "kb_name": "公司运维",
+      "type": "simple",
+      "question": "备份如何恢复？",
+      "answer": "根据资料：由运维组从备份目录取出对应的全量备份执行恢复，恢复完成后须校验数据一致性与关键业务可用性。",
+      "reference": "由运维组从备份目录取出对应的全量备份执行恢复，恢复完成后须校验数据一致性与关键业务可用性。\n",
+      "correctness": {
+        "verdict": "correct",
+        "score": 1.0
+      },
+      "faithfulness": {
+        "verdict": "faithful",
+        "score": 1.0
+      }
+    },
+    {
+      "id": "ops-12",
+      "kb_name": "公司运维",
+      "type": "paraphrase",
+      "question": "灰度发布是什么意思？",
+      "answer": "灰度发布是指：先把新版本发布给一小部分流量，观察运行无异常后再逐步扩大范围，直至全量上线。",
+      "reference": "先把新版本发布给一小部分流量，观察运行无异常后再逐步扩大范围，直至全量上线。\n",
+      "correctness": {
+        "verdict": "correct",
+        "score": 1.0
+      },
+      "faithfulness": {
+        "verdict": "faithful",
+        "score": 1.0
+      }
+    },
+    {
+      "id": "ops-13",
+      "kb_name": "公司运维",
+      "type": "simple",
+      "question": "发布失败如何回滚？",
+      "answer": "使用发布平台的一键回滚功能切回上一个稳定版本，并同步通知业务方与相关同事。",
+      "reference": "使用发布平台的一键回滚功能切回上一个稳定版本，并同步通知业务方与相关同事。\n",
+      "correctness": {
+        "verdict": "correct",
+        "score": 1.0
+      },
+      "faithfulness": {
+        "verdict": "faithful",
+        "score": 1.0
+      }
+    },
+    {
+      "id": "ops-14",
+      "kb_name": "公司运维",
+      "type": "simple",
+      "question": "服务日志在哪里查看？",
+      "answer": "服务日志（应用日志）位于 `/var/log/app/` 目录，按天滚动生成，默认保留 14 天。排查问题时优先查看对应服务的当日日志。",
+      "reference": "应用日志位于 /var/log/app/ 目录，按天滚动生成，默认保留 14 天，排查问题时优先查看对应服务的当日日志。\n",
+      "correctness": {
+        "verdict": "correct",
+        "score": 1.0
+      },
+      "faithfulness": {
+        "verdict": "faithful",
+        "score": 1.0
+      }
+    },
+    {
+      "id": "ops-15",
+      "kb_name": "公司运维",
+      "type": "paraphrase",
+      "question": "跳板机会录屏吗？",
+      "answer": "会。跳板机会对全部会话进行录屏并保留 180 天，用于事后审计与问题追溯。",
+      "reference": "会。跳板机会对全部会话进行录屏并保留 180 天，用于事后审计与问题追溯。\n",
+      "correctness": {
+        "verdict": "correct",
+        "score": 1.0
+      },
+      "faithfulness": {
+        "verdict": "faithful",
+        "score": 1.0
+      }
+    },
+    {
+      "id": "ops-16",
+      "kb_name": "公司运维",
+      "type": "simple",
+      "question": "可以个人直连生产数据库吗？",
+      "answer": "不可以。禁止个人直连生产数据库，须通过工单申请只读账号并限定来源 IP 后才能连接。",
+      "reference": "不可以。禁止个人直连生产数据库，须通过工单申请只读账号并限定来源 IP 后才能连接。\n",
+      "correctness": {
+        "verdict": "correct",
+        "score": 1.0
+      },
+      "faithfulness": {
+        "verdict": "faithful",
+        "score": 1.0
+      }
+    },
+    {
+      "id": "fin-01",
+      "kb_name": "财务报销",
+      "type": "simple",
+      "question": "差旅住宿标准是多少？",
+      "answer": "差旅住宿标准：一线城市每晚上限 500 元，其他城市每晚上限 350 元，超出部分个人承担。",
+      "reference": "一线城市每晚上限 500 元，其他城市每晚上限 350 元，超出部分个人承担。\n",
+      "correctness": {
+        "verdict": "correct",
+        "score": 1.0
+      },
+      "faithfulness": {
+        "verdict": "faithful",
+        "score": 1.0
+      }
+    },
+    {
+      "id": "fin-02",
+      "kb_name": "财务报销",
+      "type": "paraphrase",
+      "question": "报销一般多久到账？",
+      "answer": "审批通过后，财务于每周三、周五统一打款，一般 3 到 5 个工作日到账。",
+      "reference": "审批通过后，财务于每周三、周五统一打款，一般 3 到 5 个工作日到账。\n",
+      "correctness": {
+        "verdict": "correct",
+        "score": 1.0
+      },
+      "faithfulness": {
+        "verdict": "faithful",
+        "score": 1.0
+      }
+    },
+    {
+      "id": "fin-03",
+      "kb_name": "财务报销",
+      "type": "paraphrase",
+      "question": "借款什么时候要还？",
+      "answer": "借款须在业务完成后 15 个工作日内凭发票冲销；逾期未冲销的，从当月工资中扣回。",
+      "reference": "借款须在业务完成后 15 个工作日内凭发票冲销，逾期未冲销的从当月工资中扣回。\n",
+      "correctness": {
+        "verdict": "correct",
+        "score": 1.0
+      },
+      "faithfulness": {
+        "verdict": "faithful",
+        "score": 1.0
+      }
+    },
+    {
+      "id": "fin-04",
+      "kb_name": "财务报销",
+      "type": "paraphrase",
+      "question": "加班餐费能报销吗？",
+      "answer": "加班餐费可以报销。加班满 4 小时可报销一次加班餐费，标准为每人每次不超过 40 元。",
+      "reference": "加班满 4 小时可报销一次加班餐费，标准为每人每次不超过 40 元。\n",
+      "correctness": {
+        "verdict": "correct",
+        "score": 1.0
+      },
+      "faithfulness": {
+        "verdict": "faithful",
+        "score": 1.0
+      }
+    },
+    {
+      "id": "fin-05",
+      "kb_name": "财务报销",
+      "type": "simple",
+      "question": "电子发票可以报销吗？",
+      "answer": "可以。需在报销系统上传 PDF 原件，同一张发票不得重复报销。",
+      "reference": "可以。需在报销系统上传 PDF 原件，同一张发票不得重复报销。\n",
+      "correctness": {
+        "verdict": "correct",
+        "score": 1.0
+      },
+      "faithfulness": {
+        "verdict": "faithful",
+        "score": 1.0
+      }
+    },
+    {
+      "id": "hr-01",
+      "kb_name": "人事招聘",
+      "type": "paraphrase",
+      "question": "员工请假怎么走流程？",
+      "answer": "在 OA 提交请假申请，按假种附相应证明材料，经直属领导审批通过后生效。",
+      "reference": "在 OA 提交请假申请，按假种附相应证明材料，经直属领导审批通过后生效。\n",
+      "correctness": {
+        "verdict": "correct",
+        "score": 1.0
+      },
+      "faithfulness": {
+        "verdict": "faithful",
+        "score": 1.0
+      }
+    },
+    {
+      "id": "hr-02",
+      "kb_name": "人事招聘",
+      "type": "paraphrase",
+      "question": "试用期一般是多久？",
+      "answer": "一般为 3 个月，特殊岗位最长不超过 6 个月；试用期考核不合格的，公司可依法解除劳动合同。",
+      "reference": "一般为 3 个月，特殊岗位最长不超过 6 个月；试用期考核不合格的，公司可依法解除劳动合同。\n",
+      "correctness": {
+        "verdict": "correct",
+        "score": 1.0
+      },
+      "faithfulness": {
+        "verdict": "faithful",
+        "score": 1.0
+      }
+    },
+    {
+      "id": "hr-03",
+      "kb_name": "人事招聘",
+      "type": "paraphrase",
+      "question": "离职要提前多久提？",
+      "answer": "试用期员工提前 3 天、正式员工提前 30 天，以书面形式提出离职申请。",
+      "reference": "试用期员工提前 3 天、正式员工提前 30 天以书面形式提出离职申请。\n",
+      "correctness": {
+        "verdict": "correct",
+        "score": 1.0
+      },
+      "faithfulness": {
+        "verdict": "faithful",
+        "score": 1.0
+      }
+    },
+    {
+      "id": "hr-04",
+      "kb_name": "人事招聘",
+      "type": "paraphrase",
+      "question": "offer 的审批流程是什么？",
+      "answer": "offer 审批流程是：由用人部门负责人、HR 与总经理依次审批，审批通过后由 HR 发出正式 offer。",
+      "reference": "由用人部门负责人、HR 与总经理依次审批，审批通过后由 HR 发出正式 offer。\n",
+      "correctness": {
+        "verdict": "correct",
+        "score": 1.0
+      },
+      "faithfulness": {
+        "verdict": "faithful",
+        "score": 1.0
+      }
+    },
+    {
+      "id": "sec-01",
+      "kb_name": "安全合规",
+      "type": "paraphrase",
+      "question": "审计日志要保留多久？",
+      "answer": "关键系统的操作日志至少保留 6 个月，供安全审计与事件追溯使用。",
+      "reference": "关键系统的操作日志至少保留 6 个月，供安全审计与事件追溯使用。\n",
+      "correctness": {
+        "verdict": "correct",
+        "score": 1.0
+      },
+      "faithfulness": {
+        "verdict": "faithful",
+        "score": 1.0
+      }
+    },
+    {
+      "id": "sec-02",
+      "kb_name": "安全合规",
+      "type": "paraphrase",
+      "question": "弱密码可以用吗？",
+      "answer": "不可以。资料明确写明：禁止使用 123456、生日、手机号等弱密码，系统会强制校验并拒绝弱口令。",
+      "reference": "禁止使用 123456、生日、手机号等弱密码，系统会强制校验并拒绝弱口令。\n",
+      "correctness": {
+        "verdict": "correct",
+        "score": 1.0
+      },
+      "faithfulness": {
+        "verdict": "faithful",
+        "score": 1.0
+      }
+    },
+    {
+      "id": "sec-03",
+      "kb_name": "安全合规",
+      "type": "simple",
+      "question": "重要数据需要备份吗？",
+      "answer": "需要。重要工作数据须存放在公司指定盘符或云盘，禁止仅保存在本地磁盘。",
+      "reference": "需要。重要工作数据须存放在公司指定盘符或云盘，禁止仅保存在本地磁盘。",
+      "correctness": {
+        "verdict": "correct",
+        "score": 1.0
+      },
+      "faithfulness": {
+        "verdict": "faithful",
+        "score": 1.0
+      }
+    },
+    {
+      "id": "sec-04",
+      "kb_name": "安全合规",
+      "type": "paraphrase",
+      "question": "离职后账号怎么处理？",
+      "answer": "离职当日由 IT 回收其全部系统账号与访问权限，并做好交接记录；涉及交接的临时权限须在交接完成后立即回收。",
+      "reference": "离职当日由 IT 回收其全部系统账号与访问权限，并做好交接记录。\n",
+      "correctness": {
+        "verdict": "correct",
+        "score": 1.0
+      },
+      "faithfulness": {
+        "verdict": "faithful",
+        "score": 1.0
+      }
+    },
+    {
+      "id": "sec-05",
+      "kb_name": "安全合规",
+      "type": "paraphrase",
+      "question": "办公电脑能装私人软件吗？",
+      "answer": "根据资料，办公电脑禁止安装与工作无关的软件；安装工作所需软件须经 IT 审批后在指定渠道获取。",
+      "reference": "禁止安装与工作无关的软件；安装工作所需软件须经 IT 审批后在指定渠道获取。\n",
+      "correctness": {
+        "verdict": "correct",
+        "score": 1.0
+      },
+      "faithfulness": {
+        "verdict": "faithful",
+        "score": 1.0
+      }
+    },
+    {
+      "id": "att-19",
+      "kb_name": "公司规章",
+      "type": "paraphrase",
+      "question": "全勤奖怎么算？",
+      "answer": "根据资料，当月无迟到、早退、请假与旷工的员工可获全勤奖，随当月工资发放。",
+      "reference": "当月无迟到、早退、请假与旷工的员工可获全勤奖，随当月工资发放。\n",
+      "correctness": {
+        "verdict": "correct",
+        "score": 1.0
+      },
+      "faithfulness": {
+        "verdict": "faithful",
+        "score": 1.0
+      }
+    },
+    {
+      "id": "att-20",
+      "kb_name": "公司规章",
+      "type": "paraphrase",
+      "question": "迟到会不会影响全勤奖？",
+      "answer": "会。当月出现任何一次迟到，即取消当月全勤奖资格；迟到处罚另行按考勤制度执行。",
+      "reference": "会。当月出现任何一次迟到即取消当月全勤奖资格，迟到处罚另行按考勤制度执行。\n",
+      "correctness": {
+        "verdict": "correct",
+        "score": 1.0
+      },
+      "faithfulness": {
+        "verdict": "faithful",
+        "score": 1.0
+      }
+    },
+    {
+      "id": "att-21",
+      "kb_name": "公司规章",
+      "type": "simple",
+      "question": "严重违纪包括哪些行为？",
+      "answer": "严重违纪包括：旷工达到规定天数、泄露机密、伪造报销、盗窃公司财物、打架斗殴及严重违反安全规定等。",
+      "reference": "包括旷工达到规定天数、泄露机密、伪造报销、盗窃公司财物、打架斗殴及严重违反安全规定等。\n",
+      "correctness": {
+        "verdict": "correct",
+        "score": 1.0
+      },
+      "faithfulness": {
+        "verdict": "faithful",
+        "score": 1.0
+      }
+    },
+    {
+      "id": "att-22",
+      "kb_name": "公司规章",
+      "type": "paraphrase",
+      "question": "办公室能穿拖鞋吗？",
+      "answer": "不能。根据资料，工作日着装应整洁得体，禁止穿拖鞋、背心等过于随意的服饰。",
+      "reference": "工作日着装应整洁得体，禁止穿拖鞋、背心等过于随意的服饰；有客户到访时建议着商务正装。\n",
+      "correctness": {
+        "verdict": "correct",
+        "score": 1.0
+      },
+      "faithfulness": {
+        "verdict": "faithful",
+        "score": 1.0
+      }
+    },
+    {
+      "id": "att-23",
+      "kb_name": "公司规章",
+      "type": "paraphrase",
+      "question": "工牌丢了怎么办？",
+      "answer": "工牌丢失须立即向 HR 报备并申请补办，补办工本费由本人承担。",
+      "reference": "工牌丢失须立即向 HR 报备并申请补办，补办工本费由本人承担。\n",
+      "correctness": {
+        "verdict": "correct",
+        "score": 1.0
+      },
+      "faithfulness": {
+        "verdict": "faithful",
+        "score": 1.0
+      }
+    },
+    {
+      "id": "ops-17",
+      "kb_name": "公司运维",
+      "type": "paraphrase",
+      "question": "线上服务挂了先做什么？",
+      "answer": "第一时间在故障群同步信息并启动应急处置，优先恢复业务，再定位根因，避免先排查后恢复。  \n同时，发现人应在值班群或故障群第一时间上报，说明影响范围与现象，并通知值班负责人。",
+      "reference": "第一时间在故障群同步信息并启动应急处置，优先恢复业务，再定位根因，避免先排查后恢复。\n",
+      "correctness": {
+        "verdict": "correct",
+        "score": 1.0
+      },
+      "faithfulness": {
+        "verdict": "faithful",
+        "score": 1.0
+      }
+    },
+    {
+      "id": "ops-18",
+      "kb_name": "公司运维",
+      "type": "paraphrase",
+      "question": "P0 故障多久要响应？",
+      "answer": "P0 故障需在 **5 分钟内响应**；并在 **15 分钟内给出初步结论并启动应急预案**，全程保持故障群同步。",
+      "reference": "5 分钟内响应，15 分钟内给出初步结论并启动应急预案，全程保持故障群同步。\n",
+      "correctness": {
+        "verdict": "correct",
+        "score": 1.0
+      },
+      "faithfulness": {
+        "verdict": "faithful",
+        "score": 1.0
+      }
+    },
+    {
+      "id": "ops-19",
+      "kb_name": "公司运维",
+      "type": "paraphrase",
+      "question": "数据库宕机了怎么办？",
+      "answer": "立即启动应急预案，优先切换到从库或启用备份恢复，同时上报并评估数据一致性。",
+      "reference": "立即启动应急预案，优先切换到从库或启用备份恢复，同时上报并评估数据一致性。\n",
+      "correctness": {
+        "verdict": "correct",
+        "score": 1.0
+      },
+      "faithfulness": {
+        "verdict": "faithful",
+        "score": 1.0
+      }
+    },
+    {
+      "id": "ops-20",
+      "kb_name": "公司运维",
+      "type": "paraphrase",
+      "question": "云主机怎么申请？",
+      "answer": "根据资料：在运维平台提交资源申请，注明配置、用途与使用期限，经直属领导与运维负责人审批后开通。",
+      "reference": "在运维平台提交资源申请，注明配置、用途与使用期限，经直属领导与运维负责人审批后开通。\n",
+      "correctness": {
+        "verdict": "correct",
+        "score": 1.0
+      },
+      "faithfulness": {
+        "verdict": "faithful",
+        "score": 1.0
+      }
+    },
+    {
+      "id": "ops-21",
+      "kb_name": "公司运维",
+      "type": "paraphrase",
+      "question": "证书快到期了怎么办？",
+      "answer": "证书快到期时，运维会在证书到期前 30 天提醒，责任人须及时提交续期申请，避免服务因证书过期中断。",
+      "reference": "运维会在证书到期前 30 天提醒，责任人须及时提交续期申请，避免服务因证书过期中断。\n",
+      "correctness": {
+        "verdict": "correct",
+        "score": 1.0
+      },
+      "faithfulness": {
+        "verdict": "faithful",
+        "score": 1.0
+      }
+    },
+    {
+      "id": "fin-06",
+      "kb_name": "财务报销",
+      "type": "paraphrase",
+      "question": "供应商怎么引入？",
+      "answer": "供应商引入流程：由需求部门推荐并提交资质材料，经采购与财务评估、签署合作协议后，纳入合格供应商名录。",
+      "reference": "由需求部门推荐并提交资质材料，经采购与财务评估、签署合作协议后纳入合格供应商名录。\n",
+      "correctness": {
+        "verdict": "correct",
+        "score": 1.0
+      },
+      "faithfulness": {
+        "verdict": "faithful",
+        "score": 1.0
+      }
+    },
+    {
+      "id": "fin-07",
+      "kb_name": "财务报销",
+      "type": "simple",
+      "question": "报销和付款有什么区别？",
+      "answer": "报销针对个人垫付的费用，付款针对对公结算；单笔采购金额 2000 元以上的须走对公付款流程，由财务统一支付，禁止个人垫付后再报销。",
+      "reference": "报销针对个人垫付的费用，付款针对对公结算；2000 元以上采购须走对公付款流程。\n",
+      "correctness": {
+        "verdict": "correct",
+        "score": 1.0
+      },
+      "faithfulness": {
+        "verdict": "faithful",
+        "score": 1.0
+      }
+    },
+    {
+      "id": "fin-08",
+      "kb_name": "财务报销",
+      "type": "paraphrase",
+      "question": "超预算的采购可以先做吗？",
+      "answer": "不可以。超出预算的支出须先提交追加预算申请并获批；预算超支须提交追加预算申请并说明原因，经审批通过后方可继续支出。先支出后补批不予报销。",
+      "reference": "不可以。超出预算的支出须先提交追加预算申请并获批，先支出后补批不予报销。\n",
+      "correctness": {
+        "verdict": "correct",
+        "score": 1.0
+      },
+      "faithfulness": {
+        "verdict": "faithful",
+        "score": 1.0
+      }
+    },
+    {
+      "id": "fin-09",
+      "kb_name": "财务报销",
+      "type": "paraphrase",
+      "question": "预算结余能转到明年吗？",
+      "answer": "分情况：\n\n- 常规预算不结转；\n- 经批准的项目制预算结余，可按规定结转至下一年度继续使用。",
+      "reference": "常规预算不结转；经批准的项目制预算结余可按规定结转至下一年度继续使用。\n",
+      "correctness": {
+        "verdict": "correct",
+        "score": 1.0
+      },
+      "faithfulness": {
+        "verdict": "faithful",
+        "score": 1.0
+      }
+    },
+    {
+      "id": "hr-05",
+      "kb_name": "人事招聘",
+      "type": "paraphrase",
+      "question": "新员工要参加哪些培训？",
+      "answer": "根据资料，新员工培训包括：入职引导、企业文化、规章制度、安全合规以及岗位技能培训，一般在入职一个月内完成。",
+      "reference": "包括入职引导、企业文化、规章制度、安全合规以及岗位技能培训，一般在入职一个月内完成。\n",
+      "correctness": {
+        "verdict": "correct",
+        "score": 1.0
+      },
+      "faithfulness": {
+        "verdict": "faithful",
+        "score": 1.0
+      }
+    },
+    {
+      "id": "hr-06",
+      "kb_name": "人事招聘",
+      "type": "paraphrase",
+      "question": "加班费怎么算？",
+      "answer": "工作日加班按 **1.5 倍工资**计算，休息日加班按 **2 倍工资**计算，法定节假日加班按 **3 倍工资**计算；也可依考勤制度换成调休。",
+      "reference": "工作日加班按 1.5 倍、休息日按 2 倍、法定节假日按 3 倍工资计算；也可依考勤制度换成调休。\n",
+      "correctness": {
+        "verdict": "correct",
+        "score": 1.0
+      },
+      "faithfulness": {
+        "verdict": "faithful",
+        "score": 1.0
+      }
+    },
+    {
+      "id": "hr-07",
+      "kb_name": "人事招聘",
+      "type": "paraphrase",
+      "question": "工资几号发？",
+      "answer": "每月 10 日前发放上月工资，遇节假日提前发放。",
+      "reference": "每月 10 日前发放上月工资，遇节假日提前发放，工资条通过系统推送。\n",
+      "correctness": {
+        "verdict": "correct",
+        "score": 1.0
+      },
+      "faithfulness": {
+        "verdict": "faithful",
+        "score": 1.0
+      }
+    },
+    {
+      "id": "hr-08",
+      "kb_name": "人事招聘",
+      "type": "paraphrase",
+      "question": "社保什么时候开始交？",
+      "answer": "根据资料，社保自入职当月或次月起依法缴纳，具体以当地社保政策与入职时间为准。",
+      "reference": "自入职当月或次月起依法缴纳，具体以当地社保政策与入职时间为准。\n",
+      "correctness": {
+        "verdict": "correct",
+        "score": 1.0
+      },
+      "faithfulness": {
+        "verdict": "faithful",
+        "score": 1.0
+      }
+    },
+    {
+      "id": "sec-06",
+      "kb_name": "安全合规",
+      "type": "paraphrase",
+      "question": "账号可以借给别人用吗？",
+      "answer": "不可以。资料明确写明：严禁将账号与权限转借、共享或代登录，所有操作均以账号所有者身份追溯。原则上也禁止共享账号；确因运维需要的特权账号须登记并启用双人授权与操作留痕。",
+      "reference": "严禁。账号与权限不得转借、共享或代登录，所有操作均以账号所有者身份追溯。\n",
+      "correctness": {
+        "verdict": "correct",
+        "score": 1.0
+      },
+      "faithfulness": {
+        "verdict": "faithful",
+        "score": 1.0
+      }
+    },
+    {
+      "id": "sec-07",
+      "kb_name": "安全合规",
+      "type": "paraphrase",
+      "question": "需要开多因素认证吗？",
+      "answer": "需要。访问生产系统、财务系统等关键系统必须开启多因素认证，不允许仅凭密码登录。",
+      "reference": "需要。访问生产系统、财务系统等关键系统必须开启多因素认证，不允许仅凭密码登录。\n",
+      "correctness": {
+        "verdict": "correct",
+        "score": 1.0
+      },
+      "faithfulness": {
+        "verdict": "faithful",
+        "score": 1.0
+      }
+    },
+    {
+      "id": "sec-08",
+      "kb_name": "安全合规",
+      "type": "paraphrase",
+      "question": "数据怎么分级？",
+      "answer": "数据按敏感程度分为公开、内部、机密三级，不同级别对应不同的访问、存储与外发要求。",
+      "reference": "按敏感程度分为公开、内部、机密三级，不同级别对应不同的访问、存储与外发要求。\n",
+      "correctness": {
+        "verdict": "correct",
+        "score": 1.0
+      },
+      "faithfulness": {
+        "verdict": "faithful",
+        "score": 1.0
+      }
+    },
+    {
+      "id": "sec-09",
+      "kb_name": "安全合规",
+      "type": "paraphrase",
+      "question": "测试环境能用生产数据吗？",
+      "answer": "禁止直接使用生产数据；确需使用的须先进行脱敏处理并记录使用范围。",
+      "reference": "禁止直接使用生产数据，确需使用的须先进行脱敏处理并记录使用范围。\n",
+      "correctness": {
+        "verdict": "correct",
+        "score": 1.0
+      },
+      "faithfulness": {
+        "verdict": "faithful",
+        "score": 1.0
+      }
+    }
+  ]
+}
