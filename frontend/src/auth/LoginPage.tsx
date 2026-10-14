@@ -50,7 +50,7 @@ export function LoginPage() {
           <div className="mb-5 flex size-14 -rotate-3 items-center justify-center rounded-lg bg-cinnabar text-paper-raised shadow-[0_12px_26px_-14px_rgba(165,50,29,0.95)]">
             <span className="font-display text-2xl leading-none">知</span>
           </div>
-          <h1 className="font-display text-3xl tracking-wide text-ink">知识库智能问答</h1>
+          <h1 className="font-display text-3xl tracking-wide text-ink">知库</h1>
           <p className="mt-2 text-xs tracking-[0.2em] text-ink-ghost">企业内部知识检索 · 问答助手</p>
         </div>
 

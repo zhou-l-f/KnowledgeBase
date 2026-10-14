@@ -49,7 +49,7 @@ export function ChatSidebar({
     <div className="flex h-full flex-col bg-paper-raised/70">
       <div className="flex h-14 shrink-0 items-center gap-2.5 border-b border-line px-4">
         <Feather className="size-5 text-cinnabar" strokeWidth={1.7} />
-        <span className="font-display text-lg tracking-wide text-ink">知识库智能问答</span>
+        <span className="font-display text-lg tracking-wide text-ink">知库</span>
         <button
           type="button"
           onClick={onClose}
